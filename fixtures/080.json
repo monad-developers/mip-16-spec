@@ -1,0 +1,88 @@
+{
+  "description": "Filter traces by one selector. See MIP-16 eth_queryTraces Filter.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
+        "filter": {
+          "selector": "0x5339c59f"
+        },
+        "fields": {
+          "traces": [
+            "transactionIndex",
+            "traceAddress",
+            "type",
+            "to"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "traces": [
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              1
+            ],
+            "type": "CALL",
+            "to": "0xbdc776284bf593981b1f0237f053a7ad11eb596f"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              1,
+              0
+            ],
+            "type": "DELEGATECALL",
+            "to": "0xea2cc8769fb04ff1893ed11cf517b7f040c823cd"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              3
+            ],
+            "type": "CALL",
+            "to": "0xbdc776284bf593981b1f0237f053a7ad11eb596f"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              3,
+              0
+            ],
+            "type": "DELEGATECALL",
+            "to": "0xea2cc8769fb04ff1893ed11cf517b7f040c823cd"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

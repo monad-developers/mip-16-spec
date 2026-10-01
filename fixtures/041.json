@@ -1,0 +1,92 @@
+{
+  "description": "Filter transactions by one sender. See MIP-16 eth_queryTransactions Filter.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x2faf08b",
+        "toBlock": "0x2faf091",
+        "filter": {
+          "from": "0x5c4ec8d4fc6e74f8a7a6df6d36017eeffff9301f"
+        },
+        "fields": {
+          "transactions": [
+            "blockNumber",
+            "transactionIndex",
+            "from",
+            "to"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transactions": [
+          {
+            "blockNumber": "0x2faf08b",
+            "transactionIndex": "0x3",
+            "from": "0x5c4ec8d4fc6e74f8a7a6df6d36017eeffff9301f",
+            "to": "0x9f16b181103c93a587f1235aa3982a64126f323d"
+          },
+          {
+            "blockNumber": "0x2faf08c",
+            "transactionIndex": "0x1",
+            "from": "0x5c4ec8d4fc6e74f8a7a6df6d36017eeffff9301f",
+            "to": "0x9f16b181103c93a587f1235aa3982a64126f323d"
+          },
+          {
+            "blockNumber": "0x2faf08d",
+            "transactionIndex": "0x4",
+            "from": "0x5c4ec8d4fc6e74f8a7a6df6d36017eeffff9301f",
+            "to": "0x9f16b181103c93a587f1235aa3982a64126f323d"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x1",
+            "from": "0x5c4ec8d4fc6e74f8a7a6df6d36017eeffff9301f",
+            "to": "0x9f16b181103c93a587f1235aa3982a64126f323d"
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0x3",
+            "from": "0x5c4ec8d4fc6e74f8a7a6df6d36017eeffff9301f",
+            "to": "0x9f16b181103c93a587f1235aa3982a64126f323d"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x2",
+            "from": "0x5c4ec8d4fc6e74f8a7a6df6d36017eeffff9301f",
+            "to": "0x9f16b181103c93a587f1235aa3982a64126f323d"
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x1",
+            "from": "0x5c4ec8d4fc6e74f8a7a6df6d36017eeffff9301f",
+            "to": "0x9f16b181103c93a587f1235aa3982a64126f323d"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

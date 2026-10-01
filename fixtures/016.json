@@ -1,0 +1,107 @@
+{
+  "description": "Scan two blocks in desc order. Transactions in a block are also in reverse order. See MIP-16 Ordering.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf090",
+        "order": "desc",
+        "fields": {
+          "transactions": [
+            "blockNumber",
+            "transactionIndex",
+            "hash"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transactions": [
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x4",
+            "hash": "0xba5c1f763532c183b01a7837d038865bcc98e252790f739759704b150c18618b"
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "hash": "0x03270dd6a8127158b683a6dd1b02d567106d2a1410c92f39b0e8ca59e1a826da"
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "hash": "0x01ac25909db3ef01202582ee581b4ac0e45085634904b2c50fdd25ccc10cee30"
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x1",
+            "hash": "0xdcccd7b8a35c8119776ce2cbd96b8608a77d67c7977887fc3d43a39cabc0fb0d"
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x0",
+            "hash": "0xa6387e766f278e7e32e4041104f37b776db24404b2000f7801a4dffe4a01c340"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x6",
+            "hash": "0x548f35170939ccaa4474c4dc0e727695f96f91504390d39b34f5feb295f2aa2f"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x5",
+            "hash": "0x5f0c701022553767e078ff50aabb17912e30e03bc31bb2271df353636330025d"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x4",
+            "hash": "0xb37e77ab1da3b556970c9584c82fcf0bfc7533ed86a028cc2a13e9d78a908f7d"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x3",
+            "hash": "0x9c084ede0e32506d0b6b9f9db87ff71840f6b0eeecc39357bdc76d488349efac"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x2",
+            "hash": "0x91a3dd84346a786b556f4c73a1615672d03950775e9fed790c44f60accd82e2f"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x1",
+            "hash": "0x80af057dfdc2456f3c7fdcc33e6f4102ed0ff6342981f1393a65fbfb7099479a"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x0",
+            "hash": "0x2b8156656401a5b20a585318d1e5096e27b36b2e0b1a38f5c1697909a81cc92f"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "toBlock": {
+        "number": "0x2faf090",
+        "hash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8",
+        "parentHash": "0x3dc3c1b1e7c96f9f44ce90e3944c9108a24f0ec0564bfd5ab48caf472655874e"
+      },
+      "cursorBlock": {
+        "number": "0x2faf090",
+        "hash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8",
+        "parentHash": "0x3dc3c1b1e7c96f9f44ce90e3944c9108a24f0ec0564bfd5ab48caf472655874e"
+      }
+    }
+  }
+}

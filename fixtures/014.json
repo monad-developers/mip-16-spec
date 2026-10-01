@@ -1,0 +1,73 @@
+{
+  "description": "Omit fields. The response includes all transfer fields. See MIP-16 Fields and relations.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x2faf090",
+        "toBlock": "0x2faf091"
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transfers": [
+          {
+            "type": "CALL",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000",
+            "value": "0x15af1d78b58c40000",
+            "gas": "0x0",
+            "gasUsed": "0x0",
+            "input": "0x791bdcf300000000000000000000000099d11550ad84c22f25803158313ca676a0764f43",
+            "output": "0x",
+            "error": null,
+            "reverted": false,
+            "blockHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8",
+            "blockNumber": "0x2faf090",
+            "transactionHash": "0x2b8156656401a5b20a585318d1e5096e27b36b2e0b1a38f5c1697909a81cc92f",
+            "transactionIndex": "0x0",
+            "traceAddress": []
+          },
+          {
+            "type": "CALL",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000",
+            "value": "0x15af1d78b58c40000",
+            "gas": "0x0",
+            "gasUsed": "0x0",
+            "input": "0x791bdcf3000000000000000000000000a040b3eba79cef0cf380cb41e72b154456110365",
+            "output": "0x",
+            "error": null,
+            "reverted": false,
+            "blockHash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+            "blockNumber": "0x2faf091",
+            "transactionHash": "0xa6387e766f278e7e32e4041104f37b776db24404b2000f7801a4dffe4a01c340",
+            "transactionIndex": "0x0",
+            "traceAddress": []
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf090",
+        "hash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8",
+        "parentHash": "0x3dc3c1b1e7c96f9f44ce90e3944c9108a24f0ec0564bfd5ab48caf472655874e"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

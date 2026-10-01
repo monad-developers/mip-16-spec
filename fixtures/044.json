@@ -1,0 +1,74 @@
+{
+  "description": "Filter transfers by one sender. See MIP-16 eth_queryTransfers Filter.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x2faf08e",
+        "toBlock": "0x2faf091",
+        "filter": {
+          "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e"
+        },
+        "fields": {
+          "transfers": [
+            "blockNumber",
+            "from",
+            "to",
+            "value"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transfers": [
+          {
+            "blockNumber": "0x2faf08e",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000",
+            "value": "0x15af1d78b58c40000"
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000",
+            "value": "0x15af1d78b58c40000"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000",
+            "value": "0x15af1d78b58c40000"
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000",
+            "value": "0x15af1d78b58c40000"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "description": "Filter blocks by an array of miner addresses. An array matches any element. See MIP-16 Filters.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryBlocks",
+    "params": [
+      {
+        "fromBlock": "0x2faf085",
+        "toBlock": "0x2faf08c",
+        "filter": {
+          "miner": [
+            "0x45e79d7a85afeeda4d49997d835e9f7451f193bc",
+            "0x36b173c207ebd8ea4b193d0fe3a88b22e69eaa9e"
+          ]
+        },
+        "fields": {
+          "blocks": [
+            "number",
+            "miner"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "blocks": [
+          {
+            "number": "0x2faf085",
+            "miner": "0x36b173c207ebd8ea4b193d0fe3a88b22e69eaa9e"
+          },
+          {
+            "number": "0x2faf087",
+            "miner": "0x45e79d7a85afeeda4d49997d835e9f7451f193bc"
+          },
+          {
+            "number": "0x2faf08a",
+            "miner": "0x45e79d7a85afeeda4d49997d835e9f7451f193bc"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf085",
+        "hash": "0x0d14a01f7ea6a171fb8d53c735caf6ed23cba4c0bf97c83dd7deef1c336ca85b",
+        "parentHash": "0x4445bf08319eb3e8adbedbc2a9ab04a7523b5780c3827c35963ee522a340be56"
+      },
+      "toBlock": {
+        "number": "0x2faf08c",
+        "hash": "0x2a1c7a87311929cb2e730a0acd6c1f66374b0195c882fd8d823763e264a799db",
+        "parentHash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968"
+      },
+      "cursorBlock": {
+        "number": "0x2faf08c",
+        "hash": "0x2a1c7a87311929cb2e730a0acd6c1f66374b0195c882fd8d823763e264a799db",
+        "parentHash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968"
+      }
+    }
+  }
+}

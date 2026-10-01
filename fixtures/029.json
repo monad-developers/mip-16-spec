@@ -1,0 +1,167 @@
+{
+  "description": "Set target to 0x3 in desc order. The third block brings the count past target, so the page ends there and includes all of it. See MIP-16 Block-aligned pagination.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf08e",
+        "order": "desc",
+        "target": "0x3",
+        "fields": {
+          "transfers": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transfers": [
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x0",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x0",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0xa",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0x9",
+            "traceAddress": [
+              3
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0x9",
+            "traceAddress": [
+              2
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0x9",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0x8",
+            "traceAddress": [
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0x8",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0x7",
+            "traceAddress": [
+              2
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0x7",
+            "traceAddress": [
+              1,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0x0",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x8",
+            "traceAddress": [
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x8",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x7",
+            "traceAddress": [
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x7",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x6",
+            "traceAddress": [
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x6",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x5",
+            "traceAddress": [
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x5",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x0",
+            "traceAddress": []
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "toBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      },
+      "cursorBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      }
+    }
+  }
+}

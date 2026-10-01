@@ -1,0 +1,143 @@
+{
+  "description": "Join relations. 9 transfers refer to 5 transactions and 1 block, so each occurs one time. See MIP-16 Fields and relations.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x2faf08e",
+        "toBlock": "0x2faf08e",
+        "fields": {
+          "transfers": [
+            "blockNumber",
+            "transactionHash",
+            "traceAddress",
+            "value"
+          ],
+          "transactions": [
+            "hash",
+            "status"
+          ],
+          "blocks": [
+            "number"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transfers": [
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionHash": "0xe24e7271ef9f17892be6efb68e021340a6441244dd299781a1f578f7d5e775f1",
+            "traceAddress": [],
+            "value": "0x15af1d78b58c40000"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionHash": "0x97536147ceb4a89fd006d1cb658c8117f7a757f1c556b36f63278468fc22ed2e",
+            "traceAddress": [],
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionHash": "0x97536147ceb4a89fd006d1cb658c8117f7a757f1c556b36f63278468fc22ed2e",
+            "traceAddress": [
+              0
+            ],
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionHash": "0x5f4b858177a16a462d4fab956b3d3fe7d1891ac6a98f28bbca516379b5d127bd",
+            "traceAddress": [],
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionHash": "0x5f4b858177a16a462d4fab956b3d3fe7d1891ac6a98f28bbca516379b5d127bd",
+            "traceAddress": [
+              0
+            ],
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionHash": "0x78e8d71c8ca6b847f648c1caf0d58dbbbdf298718a4965432ee6bcf51530c597",
+            "traceAddress": [],
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionHash": "0x78e8d71c8ca6b847f648c1caf0d58dbbbdf298718a4965432ee6bcf51530c597",
+            "traceAddress": [
+              0
+            ],
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionHash": "0xd43ebde9d74855f605b8dea611401412c66ee4753fa6799fbaf6563aa600c4aa",
+            "traceAddress": [],
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionHash": "0xd43ebde9d74855f605b8dea611401412c66ee4753fa6799fbaf6563aa600c4aa",
+            "traceAddress": [
+              0
+            ],
+            "value": "0xa"
+          }
+        ],
+        "transactions": [
+          {
+            "hash": "0xe24e7271ef9f17892be6efb68e021340a6441244dd299781a1f578f7d5e775f1",
+            "status": "0x1"
+          },
+          {
+            "hash": "0x97536147ceb4a89fd006d1cb658c8117f7a757f1c556b36f63278468fc22ed2e",
+            "status": "0x1"
+          },
+          {
+            "hash": "0x5f4b858177a16a462d4fab956b3d3fe7d1891ac6a98f28bbca516379b5d127bd",
+            "status": "0x1"
+          },
+          {
+            "hash": "0x78e8d71c8ca6b847f648c1caf0d58dbbbdf298718a4965432ee6bcf51530c597",
+            "status": "0x1"
+          },
+          {
+            "hash": "0xd43ebde9d74855f605b8dea611401412c66ee4753fa6799fbaf6563aa600c4aa",
+            "status": "0x1"
+          }
+        ],
+        "blocks": [
+          {
+            "number": "0x2faf08e"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      },
+      "toBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      },
+      "cursorBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      }
+    }
+  }
+}

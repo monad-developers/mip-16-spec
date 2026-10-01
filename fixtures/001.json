@@ -1,0 +1,83 @@
+{
+  "description": "Select transaction fields in one block. See MIP-16 Fields and relations.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
+        "fields": {
+          "transactions": [
+            "hash",
+            "blockNumber",
+            "transactionIndex",
+            "from",
+            "to"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transactions": [
+          {
+            "hash": "0xa6387e766f278e7e32e4041104f37b776db24404b2000f7801a4dffe4a01c340",
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x0",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000"
+          },
+          {
+            "hash": "0xdcccd7b8a35c8119776ce2cbd96b8608a77d67c7977887fc3d43a39cabc0fb0d",
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x1",
+            "from": "0x5c4ec8d4fc6e74f8a7a6df6d36017eeffff9301f",
+            "to": "0x9f16b181103c93a587f1235aa3982a64126f323d"
+          },
+          {
+            "hash": "0x01ac25909db3ef01202582ee581b4ac0e45085634904b2c50fdd25ccc10cee30",
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "from": "0x62eb1477ebb9aaa9600d2784b349e486f0d6299d",
+            "to": "0xed1448a8f1859970b2c96d184938690353e88330"
+          },
+          {
+            "hash": "0x03270dd6a8127158b683a6dd1b02d567106d2a1410c92f39b0e8ca59e1a826da",
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "from": "0x4ea043757f7d2e0b386b26e57633ed97863ff63d",
+            "to": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4"
+          },
+          {
+            "hash": "0xba5c1f763532c183b01a7837d038865bcc98e252790f739759704b150c18618b",
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x4",
+            "from": "0x8576189ccc8786ba1376314140466a448840f5b9",
+            "to": "0xf2ab41c8a3fab45a202acbb67623e07742931fa0"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

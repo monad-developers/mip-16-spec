@@ -1,0 +1,118 @@
+{
+  "description": "Join the blocks relation. Each block occurs one time. See MIP-16 Fields and relations.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x2faf08b",
+        "toBlock": "0x2faf091",
+        "filter": {
+          "from": "0x5c4ec8d4fc6e74f8a7a6df6d36017eeffff9301f"
+        },
+        "fields": {
+          "transactions": [
+            "hash",
+            "blockNumber"
+          ],
+          "blocks": [
+            "number",
+            "hash",
+            "timestamp"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transactions": [
+          {
+            "hash": "0xba7d8a38152238834978479dd59498e8f6837775defdebb3d96505235b2d219c",
+            "blockNumber": "0x2faf08b"
+          },
+          {
+            "hash": "0xf55301098cf0f3b4995088c2c69919257f2277b0d6f2f00c4a7d4563ac7e648a",
+            "blockNumber": "0x2faf08c"
+          },
+          {
+            "hash": "0x7f3a2407ecd12bd9bd47436aaf421c56384ac870a927fad157ef95f066c53475",
+            "blockNumber": "0x2faf08d"
+          },
+          {
+            "hash": "0xc675fb9195f1e4e9545937152a6c0cbae1c9f3e09b7b1a0e40f34d220104627d",
+            "blockNumber": "0x2faf08e"
+          },
+          {
+            "hash": "0x0ef88f684636be5aa465e43906c25523d8a1f6d4de2ee10876e8de47dec4afed",
+            "blockNumber": "0x2faf08f"
+          },
+          {
+            "hash": "0x91a3dd84346a786b556f4c73a1615672d03950775e9fed790c44f60accd82e2f",
+            "blockNumber": "0x2faf090"
+          },
+          {
+            "hash": "0xdcccd7b8a35c8119776ce2cbd96b8608a77d67c7977887fc3d43a39cabc0fb0d",
+            "blockNumber": "0x2faf091"
+          }
+        ],
+        "blocks": [
+          {
+            "number": "0x2faf08b",
+            "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+            "timestamp": "0x696fcfdd"
+          },
+          {
+            "number": "0x2faf08c",
+            "hash": "0x2a1c7a87311929cb2e730a0acd6c1f66374b0195c882fd8d823763e264a799db",
+            "timestamp": "0x696fcfdd"
+          },
+          {
+            "number": "0x2faf08d",
+            "hash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88",
+            "timestamp": "0x696fcfde"
+          },
+          {
+            "number": "0x2faf08e",
+            "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+            "timestamp": "0x696fcfde"
+          },
+          {
+            "number": "0x2faf08f",
+            "hash": "0x3dc3c1b1e7c96f9f44ce90e3944c9108a24f0ec0564bfd5ab48caf472655874e",
+            "timestamp": "0x696fcfdf"
+          },
+          {
+            "number": "0x2faf090",
+            "hash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8",
+            "timestamp": "0x696fcfdf"
+          },
+          {
+            "number": "0x2faf091",
+            "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+            "timestamp": "0x696fcfdf"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

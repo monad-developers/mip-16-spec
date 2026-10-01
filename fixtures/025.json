@@ -1,0 +1,58 @@
+{
+  "description": "Set target to 0x2 in desc order. The page ends at the second block from fromBlock. See MIP-16 Block-aligned pagination.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryBlocks",
+    "params": [
+      {
+        "fromBlock": "0x2faf08d",
+        "toBlock": "0x2faf08a",
+        "order": "desc",
+        "target": "0x2",
+        "fields": {
+          "blocks": [
+            "number"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "blocks": [
+          {
+            "number": "0x2faf08d"
+          },
+          {
+            "number": "0x2faf08c"
+          },
+          {
+            "number": "0x2faf08b"
+          },
+          {
+            "number": "0x2faf08a"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08d",
+        "hash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88",
+        "parentHash": "0x2a1c7a87311929cb2e730a0acd6c1f66374b0195c882fd8d823763e264a799db"
+      },
+      "toBlock": {
+        "number": "0x2faf08a",
+        "hash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973",
+        "parentHash": "0x04e9862654fd63f2afc6d02f34bad0461329957a3c28aa5b616bca3cb17d1982"
+      },
+      "cursorBlock": {
+        "number": "0x2faf08a",
+        "hash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973",
+        "parentHash": "0x04e9862654fd63f2afc6d02f34bad0461329957a3c28aa5b616bca3cb17d1982"
+      }
+    }
+  }
+}

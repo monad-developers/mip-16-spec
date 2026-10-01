@@ -1,0 +1,89 @@
+{
+  "description": "Select receipt fields. The reverted transaction has status 0x0. See MIP-16 eth_queryTransactions Response.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
+        "fields": {
+          "transactions": [
+            "transactionIndex",
+            "type",
+            "status",
+            "gasUsed",
+            "cumulativeGasUsed",
+            "effectiveGasPrice"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transactions": [
+          {
+            "transactionIndex": "0x0",
+            "type": "0x0",
+            "status": "0x1",
+            "gasUsed": "0x0",
+            "cumulativeGasUsed": "0x0",
+            "effectiveGasPrice": "0x0"
+          },
+          {
+            "transactionIndex": "0x1",
+            "type": "0x2",
+            "status": "0x1",
+            "gasUsed": "0x739d",
+            "cumulativeGasUsed": "0x739d",
+            "effectiveGasPrice": "0x17bfac7c0d"
+          },
+          {
+            "transactionIndex": "0x2",
+            "type": "0x1",
+            "status": "0x1",
+            "gasUsed": "0x9d788",
+            "cumulativeGasUsed": "0xa4b25",
+            "effectiveGasPrice": "0x17bfac7c01"
+          },
+          {
+            "transactionIndex": "0x3",
+            "type": "0x2",
+            "status": "0x1",
+            "gasUsed": "0x45bc8",
+            "cumulativeGasUsed": "0xea6ed",
+            "effectiveGasPrice": "0x17bfac7c00"
+          },
+          {
+            "transactionIndex": "0x4",
+            "type": "0x2",
+            "status": "0x0",
+            "gasUsed": "0x5208",
+            "cumulativeGasUsed": "0xef8f5",
+            "effectiveGasPrice": "0x174876e800"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

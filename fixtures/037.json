@@ -1,0 +1,60 @@
+{
+  "description": "Set target to 0x1 with a filter. The page includes blocks without a match before the first match. See MIP-16 Block-aligned pagination.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf08b",
+        "toBlock": "0x2faf091",
+        "target": "0x1",
+        "filter": {
+          "address": "0x0c65a0bc65a5d819235b71f554d210d3f80e0852"
+        },
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "address"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "logs": [
+          {
+            "blockNumber": "0x2faf08d",
+            "logIndex": "0xd",
+            "address": "0x0c65a0bc65a5d819235b71f554d210d3f80e0852"
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "logIndex": "0x15",
+            "address": "0x0c65a0bc65a5d819235b71f554d210d3f80e0852"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

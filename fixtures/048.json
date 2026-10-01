@@ -1,0 +1,62 @@
+{
+  "description": "Filter traces by an array of recipients. See MIP-16 Filters.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
+        "filter": {
+          "to": [
+            "0x9f16b181103c93a587f1235aa3982a64126f323d",
+            "0x368ee51e47a594fe1e9908b48228748a30bc7ca4"
+          ]
+        },
+        "fields": {
+          "traces": [
+            "transactionIndex",
+            "traceAddress",
+            "to"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "traces": [
+          {
+            "transactionIndex": "0x1",
+            "traceAddress": [],
+            "to": "0x9f16b181103c93a587f1235aa3982a64126f323d"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [],
+            "to": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

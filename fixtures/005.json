@@ -1,0 +1,90 @@
+{
+  "description": "Select all block fields with \"all\". See MIP-16 eth_queryBlocks Response.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryBlocks",
+    "params": [
+      {
+        "fromBlock": "0x2faf090",
+        "toBlock": "0x2faf091",
+        "fields": {
+          "blocks": "all"
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "blocks": [
+          {
+            "number": "0x2faf090",
+            "hash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8",
+            "parentHash": "0x3dc3c1b1e7c96f9f44ce90e3944c9108a24f0ec0564bfd5ab48caf472655874e",
+            "timestamp": "0x696fcfdf",
+            "nonce": "0x0000000000000000",
+            "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+            "logsBloom": "0x000000008000002000000010040000008004000003040000004000000001000040000100000000841000000000000000004000100002000020002000004000402010022000000000000000080060000020000000098080000020000000002000040000200200000001000004000008002000000008000100000010100800000000000001200000000042000000000000200004814000000000000000000000000000000010000000000000000040000000000000000000020040080000200001001000c2000000000000000000808000000c80000000000000000000000020000400000000000004000000000000000000000000000042000000000002000000",
+            "transactionsRoot": "0xe8c10cf94e943fdbbb6ff154ff8c251073017d2db9e83b16de31d1378bf30a63",
+            "stateRoot": "0xfefefacc03617c73cd33e616f1d739a4946a8d90ece6d915a78db800e0f77ca0",
+            "receiptsRoot": "0x2426893b6ad7b68615e6138cdf5c14784b55e3eaf5326146e51ab351ce531e28",
+            "miner": "0x7471631128d4ed8f0edeaf229ca26e63a017a9eb",
+            "difficulty": "0x0",
+            "totalDifficulty": "0x0",
+            "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "size": "0x23c6",
+            "gasLimit": "0xbebc200",
+            "gasUsed": "0x23ac6a",
+            "baseFeePerGas": "0x174876e800",
+            "blobGasUsed": "0x0",
+            "excessBlobGas": "0x0",
+            "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+            "parentBeaconBlockRoot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "number": "0x2faf091",
+            "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+            "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8",
+            "timestamp": "0x696fcfdf",
+            "nonce": "0x0000000000000000",
+            "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+            "logsBloom": "0x00000000000000200000001000000000000400000200000000000000000100000000010000000080000000000000000000000000000000000000200000000000001000000000000000000000000000002000000008808000000000000000000004000020000000000000000000000000000000000000010000000000080000000000000060000000004000000000000000000400400000000000000000000000000001000000000000000080004000000000000000000000004000000000000000100000000000000000000000800000000800000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000",
+            "transactionsRoot": "0x64f7bd20512f5545f498f49732cc91465937601c22cbdea3f1211744dec58caf",
+            "stateRoot": "0x0bf416c363e9c7ac3fa4fa7da4d17f43b5da898de04546a2cb21885f8e46d570",
+            "receiptsRoot": "0x25fd2f5dc474db62472a3bc1cfb2e7b90e0bc8e0ff9ea7a49b1c8fc49a5e2962",
+            "miner": "0xfddac94ace6d388d3c515c1a0ab08333b9dcd3b8",
+            "difficulty": "0x0",
+            "totalDifficulty": "0x0",
+            "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "size": "0x128d",
+            "gasLimit": "0xbebc200",
+            "gasUsed": "0xef8f5",
+            "baseFeePerGas": "0x174876e800",
+            "blobGasUsed": "0x0",
+            "excessBlobGas": "0x0",
+            "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+            "parentBeaconBlockRoot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf090",
+        "hash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8",
+        "parentHash": "0x3dc3c1b1e7c96f9f44ce90e3944c9108a24f0ec0564bfd5ab48caf472655874e"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

@@ -1,0 +1,293 @@
+{
+  "description": "Set includeReverted to true in a successful transaction. Frames under a failed call have reverted true and error null, because only an ancestor failed. The transaction has status 0x1. See MIP-16 eth_queryTraces Response.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x2faf08e",
+        "toBlock": "0x2faf08e",
+        "filter": {
+          "from": "0x77730db74478a64d7aa060dd6729943c550603ed",
+          "to": "0x188d586ddcf52439676ca21a244753fa19f9ea8e",
+          "includeReverted": true
+        },
+        "fields": {
+          "traces": [
+            "transactionHash",
+            "traceAddress",
+            "value",
+            "error",
+            "reverted"
+          ],
+          "transactions": [
+            "hash",
+            "status"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "traces": [
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              1,
+              0
+            ],
+            "value": "0x0",
+            "error": "execution reverted",
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              1,
+              0,
+              0,
+              0
+            ],
+            "value": "0x0",
+            "error": null,
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              1,
+              0,
+              0,
+              1
+            ],
+            "value": "0x23dc89f9175e54a5dde7",
+            "error": null,
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              1,
+              0,
+              0,
+              2
+            ],
+            "value": "0x0",
+            "error": "execution reverted",
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              2,
+              0
+            ],
+            "value": "0x0",
+            "error": "execution reverted",
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "value": "0x0",
+            "error": null,
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              2,
+              0,
+              0,
+              1
+            ],
+            "value": "0x17e85bfb469888c1b2fc",
+            "error": null,
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              2,
+              0,
+              0,
+              2
+            ],
+            "value": "0x0",
+            "error": "execution reverted",
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              3,
+              0
+            ],
+            "value": "0x0",
+            "error": "execution reverted",
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              3,
+              0,
+              0,
+              0
+            ],
+            "value": "0x0",
+            "error": null,
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              3,
+              0,
+              0,
+              1
+            ],
+            "value": "0x11ee44fc8baf2a52eef4",
+            "error": null,
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              3,
+              0,
+              0,
+              2
+            ],
+            "value": "0x0",
+            "error": "execution reverted",
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              4,
+              0
+            ],
+            "value": "0x0",
+            "error": "execution reverted",
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              4,
+              0,
+              0,
+              0
+            ],
+            "value": "0x0",
+            "error": null,
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              4,
+              0,
+              0,
+              2
+            ],
+            "value": "0x0",
+            "error": null,
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              4,
+              0,
+              0,
+              3
+            ],
+            "value": "0x0",
+            "error": "execution reverted",
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              5,
+              0
+            ],
+            "value": "0x0",
+            "error": "execution reverted",
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              5,
+              0,
+              0,
+              0
+            ],
+            "value": "0x0",
+            "error": null,
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              5,
+              0,
+              0,
+              2
+            ],
+            "value": "0x0",
+            "error": null,
+            "reverted": true
+          },
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              5,
+              0,
+              0,
+              3
+            ],
+            "value": "0x0",
+            "error": "execution reverted",
+            "reverted": true
+          }
+        ],
+        "transactions": [
+          {
+            "hash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "status": "0x1"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      },
+      "toBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      },
+      "cursorBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      }
+    }
+  }
+}

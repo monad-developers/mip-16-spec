@@ -1,0 +1,113 @@
+{
+  "description": "Filter USDC Transfer logs by address and topic0, and join blocks. Blocks without a match are not returned. See MIP-16 Example.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf08e",
+        "toBlock": "0x2faf091",
+        "order": "asc",
+        "filter": {
+          "address": "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+          ]
+        },
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "address",
+            "data",
+            "topics"
+          ],
+          "blocks": [
+            "number",
+            "timestamp"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "logs": [
+          {
+            "blockNumber": "0x2faf08f",
+            "logIndex": "0x1",
+            "address": "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+            "data": "0x0000000000000000000000000000000000000000000000000000000062e7aa9c",
+            "topics": [
+              "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+              "0x000000000000000000000000f40d962010a81aa709f2f1d7be597bb673458d26",
+              "0x0000000000000000000000005e60bc3f7a7303bc4dfe4dc2220bdc90bc04fe22"
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "logIndex": "0x4",
+            "address": "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+            "data": "0x00000000000000000000000000000000000000000000000000000003e15b7284",
+            "topics": [
+              "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+              "0x0000000000000000000000002e32345bf0592bff19313831b99900c530d37d90",
+              "0x00000000000000000000000073ada1ea346cc3908f41cf67a040f0acd7808be0"
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "logIndex": "0x7",
+            "address": "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+            "data": "0x00000000000000000000000000000000000000000000000000000003e15b7284",
+            "topics": [
+              "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+              "0x0000000000000000000000002e32345bf0592bff19313831b99900c530d37d90",
+              "0x00000000000000000000000073ada1ea346cc3908f41cf67a040f0acd7808be0"
+            ]
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "logIndex": "0x1",
+            "address": "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+            "data": "0x0000000000000000000000000000000000000000000000000000000042aebf68",
+            "topics": [
+              "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+              "0x000000000000000000000000e4572fab25b3f00bb1fef9582805aabe18121c2a",
+              "0x0000000000000000000000005afd3ec861f6104af26e8755abcc1f876de77620"
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "number": "0x2faf08f",
+            "timestamp": "0x696fcfdf"
+          },
+          {
+            "number": "0x2faf090",
+            "timestamp": "0x696fcfdf"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

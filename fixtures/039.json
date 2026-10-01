@@ -1,0 +1,81 @@
+{
+  "description": "Set target to 0x1 with a filter. The page includes blocks without a match before the first match. See MIP-16 Block-aligned pagination.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x2faf08b",
+        "toBlock": "0x2faf091",
+        "target": "0x1",
+        "filter": {
+          "to": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137"
+        },
+        "fields": {
+          "transfers": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress",
+            "to"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transfers": [
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x5",
+            "traceAddress": [],
+            "to": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x6",
+            "traceAddress": [],
+            "to": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x7",
+            "traceAddress": [],
+            "to": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x8",
+            "traceAddress": [],
+            "to": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137"
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0x8",
+            "traceAddress": [],
+            "to": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "description": "Scan four blocks in desc order. Blocks are newest-first. See MIP-16 Block range and Ordering.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryBlocks",
+    "params": [
+      {
+        "fromBlock": "0x2faf08d",
+        "toBlock": "0x2faf08a",
+        "order": "desc",
+        "fields": {
+          "blocks": [
+            "number",
+            "hash",
+            "parentHash",
+            "timestamp"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "blocks": [
+          {
+            "number": "0x2faf08d",
+            "hash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88",
+            "parentHash": "0x2a1c7a87311929cb2e730a0acd6c1f66374b0195c882fd8d823763e264a799db",
+            "timestamp": "0x696fcfde"
+          },
+          {
+            "number": "0x2faf08c",
+            "hash": "0x2a1c7a87311929cb2e730a0acd6c1f66374b0195c882fd8d823763e264a799db",
+            "parentHash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+            "timestamp": "0x696fcfdd"
+          },
+          {
+            "number": "0x2faf08b",
+            "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+            "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973",
+            "timestamp": "0x696fcfdd"
+          },
+          {
+            "number": "0x2faf08a",
+            "hash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973",
+            "parentHash": "0x04e9862654fd63f2afc6d02f34bad0461329957a3c28aa5b616bca3cb17d1982",
+            "timestamp": "0x696fcfdc"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08d",
+        "hash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88",
+        "parentHash": "0x2a1c7a87311929cb2e730a0acd6c1f66374b0195c882fd8d823763e264a799db"
+      },
+      "toBlock": {
+        "number": "0x2faf08a",
+        "hash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973",
+        "parentHash": "0x04e9862654fd63f2afc6d02f34bad0461329957a3c28aa5b616bca3cb17d1982"
+      },
+      "cursorBlock": {
+        "number": "0x2faf08a",
+        "hash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973",
+        "parentHash": "0x04e9862654fd63f2afc6d02f34bad0461329957a3c28aa5b616bca3cb17d1982"
+      }
+    }
+  }
+}

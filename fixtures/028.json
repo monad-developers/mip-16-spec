@@ -1,0 +1,618 @@
+{
+  "description": "Set target to 0x14 in desc order. The first block has more matches, so the page ends at the first block and includes all of them. See MIP-16 Block-aligned pagination.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x2faf092",
+        "toBlock": "0x2faf091",
+        "order": "desc",
+        "target": "0x14",
+        "fields": {
+          "traces": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "traces": [
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x5",
+            "traceAddress": [
+              0,
+              3
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x5",
+            "traceAddress": [
+              0,
+              2
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x5",
+            "traceAddress": [
+              0,
+              1
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x5",
+            "traceAddress": [
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x5",
+            "traceAddress": [
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x5",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x4",
+            "traceAddress": [
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x4",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              4,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              4
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              3,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              3,
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              3,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              3
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              2
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              1
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x3",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              11
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              10
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              9
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              8
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              7
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              6
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              5
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              4
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              3
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              2
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              1
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x2",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x1",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf092",
+            "transactionIndex": "0x0",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              11
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              10
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              9
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              8
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              7
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              6
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              5
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              4
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              3
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              2
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              1
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              4,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              4
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              3,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              3,
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              3,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              3
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              2
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              1
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x1",
+            "traceAddress": []
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x0",
+            "traceAddress": []
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf092",
+        "hash": "0x5e5c9455f14506378ccdc0ff68bc0c49189d0db3964584bcb488e50e346751e3",
+        "parentHash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

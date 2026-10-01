@@ -1,0 +1,95 @@
+{
+  "description": "Set target to 0x3 in desc order. The first block has 5 matches, so the page ends at the first block and includes all 5. See MIP-16 Block-aligned pagination.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf090",
+        "order": "desc",
+        "target": "0x3",
+        "fields": {
+          "transactions": [
+            "blockNumber",
+            "transactionIndex"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transactions": [
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x4"
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x3"
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x2"
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x1"
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "transactionIndex": "0x0"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x6"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x5"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x4"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x3"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x2"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x1"
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "transactionIndex": "0x0"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "toBlock": {
+        "number": "0x2faf090",
+        "hash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8",
+        "parentHash": "0x3dc3c1b1e7c96f9f44ce90e3944c9108a24f0ec0564bfd5ab48caf472655874e"
+      },
+      "cursorBlock": {
+        "number": "0x2faf090",
+        "hash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8",
+        "parentHash": "0x3dc3c1b1e7c96f9f44ce90e3944c9108a24f0ec0564bfd5ab48caf472655874e"
+      }
+    }
+  }
+}

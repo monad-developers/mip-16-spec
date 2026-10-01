@@ -1,0 +1,70 @@
+{
+  "description": "Omit includeReverted in the same transaction. Only the frame that did not revert is returned. See MIP-16 eth_queryTraces Filter.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x2faf08e",
+        "toBlock": "0x2faf08e",
+        "filter": {
+          "from": "0x77730db74478a64d7aa060dd6729943c550603ed"
+        },
+        "fields": {
+          "traces": [
+            "transactionHash",
+            "traceAddress",
+            "to",
+            "error",
+            "reverted"
+          ],
+          "transactions": [
+            "hash",
+            "status"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "traces": [
+          {
+            "transactionHash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "traceAddress": [
+              0
+            ],
+            "to": "0xc8689a475b9d2cc5a21270842f5867a2d762ee79",
+            "error": null,
+            "reverted": false
+          }
+        ],
+        "transactions": [
+          {
+            "hash": "0xb263ea6377e7e74fa5c7ab0de58a7ae16f7fa5e7d2c12df4b5af8a924cdbe7f6",
+            "status": "0x1"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      },
+      "toBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      },
+      "cursorBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      }
+    }
+  }
+}

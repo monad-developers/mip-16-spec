@@ -1,0 +1,124 @@
+{
+  "description": "Filter logs by topic position 2. Positions 0 and 1 are null wildcards. See MIP-16 eth_queryLogs Filter.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf08b",
+        "toBlock": "0x2faf091",
+        "filter": {
+          "topics": [
+            null,
+            null,
+            "0x0000000000000000000000006f49a8f621353f12378d0046e7d7e4b9b249dc9e"
+          ]
+        },
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "address",
+            "topics"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "logs": [
+          {
+            "blockNumber": "0x2faf08b",
+            "logIndex": "0x0",
+            "address": "0x0000000000000000000000000000000000001000",
+            "topics": [
+              "0x3a420a01486b6b28d6ae89c51f5c3bde3e0e74eecbb646a0c481ccba3aae3754",
+              "0x000000000000000000000000000000000000000000000000000000000000000c",
+              "0x0000000000000000000000006f49a8f621353f12378d0046e7d7e4b9b249dc9e"
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08c",
+            "logIndex": "0x0",
+            "address": "0x0000000000000000000000000000000000001000",
+            "topics": [
+              "0x3a420a01486b6b28d6ae89c51f5c3bde3e0e74eecbb646a0c481ccba3aae3754",
+              "0x00000000000000000000000000000000000000000000000000000000000000a6",
+              "0x0000000000000000000000006f49a8f621353f12378d0046e7d7e4b9b249dc9e"
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08d",
+            "logIndex": "0x0",
+            "address": "0x0000000000000000000000000000000000001000",
+            "topics": [
+              "0x3a420a01486b6b28d6ae89c51f5c3bde3e0e74eecbb646a0c481ccba3aae3754",
+              "0x000000000000000000000000000000000000000000000000000000000000005c",
+              "0x0000000000000000000000006f49a8f621353f12378d0046e7d7e4b9b249dc9e"
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "logIndex": "0x0",
+            "address": "0x0000000000000000000000000000000000001000",
+            "topics": [
+              "0x3a420a01486b6b28d6ae89c51f5c3bde3e0e74eecbb646a0c481ccba3aae3754",
+              "0x0000000000000000000000000000000000000000000000000000000000000029",
+              "0x0000000000000000000000006f49a8f621353f12378d0046e7d7e4b9b249dc9e"
+            ]
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "logIndex": "0x0",
+            "address": "0x0000000000000000000000000000000000001000",
+            "topics": [
+              "0x3a420a01486b6b28d6ae89c51f5c3bde3e0e74eecbb646a0c481ccba3aae3754",
+              "0x000000000000000000000000000000000000000000000000000000000000008b",
+              "0x0000000000000000000000006f49a8f621353f12378d0046e7d7e4b9b249dc9e"
+            ]
+          },
+          {
+            "blockNumber": "0x2faf090",
+            "logIndex": "0x0",
+            "address": "0x0000000000000000000000000000000000001000",
+            "topics": [
+              "0x3a420a01486b6b28d6ae89c51f5c3bde3e0e74eecbb646a0c481ccba3aae3754",
+              "0x00000000000000000000000000000000000000000000000000000000000000aa",
+              "0x0000000000000000000000006f49a8f621353f12378d0046e7d7e4b9b249dc9e"
+            ]
+          },
+          {
+            "blockNumber": "0x2faf091",
+            "logIndex": "0x0",
+            "address": "0x0000000000000000000000000000000000001000",
+            "topics": [
+              "0x3a420a01486b6b28d6ae89c51f5c3bde3e0e74eecbb646a0c481ccba3aae3754",
+              "0x0000000000000000000000000000000000000000000000000000000000000033",
+              "0x0000000000000000000000006f49a8f621353f12378d0046e7d7e4b9b249dc9e"
+            ]
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "description": "Filter transfers by an array of recipients. See MIP-16 Filters.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x2faf08e",
+        "toBlock": "0x2faf08f",
+        "filter": {
+          "to": [
+            "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+            "0x7bea2d0a59d1ea32ee5b0064f070614ddfdea586"
+          ]
+        },
+        "fields": {
+          "transfers": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress",
+            "to"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transfers": [
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x5",
+            "traceAddress": [
+              0
+            ],
+            "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x6",
+            "traceAddress": [
+              0
+            ],
+            "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x7",
+            "traceAddress": [
+              0
+            ],
+            "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a"
+          },
+          {
+            "blockNumber": "0x2faf08e",
+            "transactionIndex": "0x8",
+            "traceAddress": [
+              0
+            ],
+            "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a"
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0x7",
+            "traceAddress": [
+              2
+            ],
+            "to": "0x7bea2d0a59d1ea32ee5b0064f070614ddfdea586"
+          },
+          {
+            "blockNumber": "0x2faf08f",
+            "transactionIndex": "0x8",
+            "traceAddress": [
+              0
+            ],
+            "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08e",
+        "hash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710",
+        "parentHash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88"
+      },
+      "toBlock": {
+        "number": "0x2faf08f",
+        "hash": "0x3dc3c1b1e7c96f9f44ce90e3944c9108a24f0ec0564bfd5ab48caf472655874e",
+        "parentHash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710"
+      },
+      "cursorBlock": {
+        "number": "0x2faf08f",
+        "hash": "0x3dc3c1b1e7c96f9f44ce90e3944c9108a24f0ec0564bfd5ab48caf472655874e",
+        "parentHash": "0x9520e4ac669962920e8f1721879d243ac76536d759d02549eb4aea5f03fe9710"
+      }
+    }
+  }
+}
