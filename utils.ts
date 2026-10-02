@@ -581,6 +581,38 @@ export function mergePages(method: string, pages: QueryResult[]): QueryResult {
 
 export type PagedResult = { result: QueryResult; pages: number; problems: string[] };
 
+/** Tells if a block parameter is a tag. An omitted block parameter has a default tag. See MIP-16 Block range. */
+export function isTag(block: string | undefined): boolean {
+  return block === undefined || !block.startsWith("0x");
+}
+
+/** Gives the tag of a block parameter. An omitted parameter has the default tag for its order. See MIP-16 Block range. */
+function tagOf(params: QueryParams, k: "fromBlock" | "toBlock"): string | undefined {
+  const v = params[k];
+  if (v !== undefined) return isTag(v) ? v : undefined;
+  const desc = params.order === "desc";
+  return (k === "fromBlock") === desc ? "latest" : "earliest";
+}
+
+/**
+ * Checks how the server resolved fromBlock and toBlock. A block number resolves to the same number. Two equal tags
+ * in one request resolve to the same block, because the server resolves tags one time, at query execution time.
+ * "earliest" resolves to block 0x0.
+ */
+export function checkResolvedRange(params: QueryParams, result: QueryResult): string[] {
+  const problems: string[] = [];
+  for (const k of ["fromBlock", "toBlock"] as const) {
+    const requested = params[k];
+    if (!isTag(requested) && result[k].number !== requested) problems.push(`${k}.number is ${result[k].number}, but the request has ${requested}`);
+    if (tagOf(params, k) === "earliest" && result[k].number !== "0x0") problems.push(`${k} is "earliest", but it resolved to ${result[k].number}, not 0x0`);
+  }
+  const fromTag = tagOf(params, "fromBlock");
+  if (fromTag !== undefined && fromTag === tagOf(params, "toBlock") && result.fromBlock.hash !== result.toBlock.hash) {
+    problems.push(`fromBlock and toBlock are both "${fromTag}", but they resolved to different blocks: ${result.fromBlock.number} and ${result.toBlock.number}`);
+  }
+  return problems;
+}
+
 /** The maximum number of pages for one fixture. It stops a server that does not advance. */
 export const MAX_PAGES = 1000;
 
@@ -607,7 +639,10 @@ export async function collectPages(
       break;
     }
     const at = `page ${pages.length + 1}`;
-    const nextParams: QueryParams = { ...params, fromBlock: nextFromBlock(params.order, page.cursorBlock) };
+    // A tag such as "latest" can resolve to a different block on each request. Thus each later page uses the
+    // toBlock number that the first page resolved, so that the runner does not follow the chain tip.
+    const toBlock = isTag(params.toBlock) ? first.toBlock.number : params.toBlock;
+    const nextParams: QueryParams = { ...params, fromBlock: nextFromBlock(params.order, page.cursorBlock), toBlock };
     const res = await query(url, method, nextParams, onRequest);
     if (!res.result) {
       problems.push(`${at} failed with ${describeError(res.error, nextParams)}`);
@@ -685,6 +720,19 @@ function diffLength(expected: unknown[], actual: unknown[], path: string): strin
   if (missing.length) lines.push(`  ${missing.length} expected objects are absent. First: ${short(missing[0], 200)}`);
   if (extra.length) lines.push(`  ${extra.length} distinct objects are not expected. First: ${short(extra[0], 200)}`);
   return [lines.join("\n")];
+}
+
+/**
+ * Replaces the text of each non-null trace and transfer error with one value, so that the comparison checks only
+ * if error is null. MIP-16 does not specify the text, so different correct servers can use different text.
+ */
+export function maskErrorText(result: QueryResult): QueryResult {
+  const data: QueryResult["data"] = { ...result.data };
+  for (const type of ["traces", "transfers"]) {
+    const rows = data[type];
+    if (Array.isArray(rows)) data[type] = rows.map((r) => (typeof r.error === "string" ? { ...r, error: "(error text is not compared)" } : r));
+  }
+  return { ...result, data };
 }
 
 /** Gives JSON with sorted object keys, so that two equal objects give the same text. */
@@ -768,13 +816,17 @@ async function runChecked(url: string, fixture: Fixture, report: OnRequest, onNo
   const method = request.method;
   const params = (request.params as QueryParams[])[0]!;
   const first = actual.result!;
-  const checkTargetPage = (page: QueryResult) => checkTargetCursor(method, params, expected.result!, page, onNote);
-  const problems = [...checkPage(method, params, first), ...checkTargetPage(first)];
+  const checkTargetPage = (page: QueryResult) => (expected.result ? checkTargetCursor(method, params, expected.result, page, onNote) : []);
+  const problems = [...checkPage(method, params, first), ...checkResolvedRange(params, first), ...checkTargetPage(first)];
   if (problems.length) return { status: "failed", problems };
 
   const paged = await collectPages(url, method, params, first, report, checkTargetPage);
   if (paged.problems.length) return { status: "failed", problems: paged.problems, pages: paged.pages };
 
-  const differences = diff(expected.result, paged.result);
+  // A fixture without an expected result tests a request that depends on the server state, such as a tag.
+  // The request must succeed and pass all checks, but the runner does not compare the result.
+  if (!expected.result) return { status: "passed", problems: [], pages: paged.pages };
+
+  const differences = diff(maskErrorText(expected.result), maskErrorText(paged.result));
   return { status: differences.length ? "failed" : "passed", problems: differences, pages: paged.pages };
 }

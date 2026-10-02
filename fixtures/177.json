@@ -1,0 +1,24 @@
+{
+  "description": "Set toBlock to \"latest\" in desc order and omit fromBlock. In desc order, fromBlock defaults to \"latest\". The result depends on the server state, so the runner does the checks but does not compare. See MIP-16 Block range.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "toBlock": "latest",
+        "order": "desc",
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1
+  }
+}
