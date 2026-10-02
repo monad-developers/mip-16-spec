@@ -1,0 +1,32 @@
+{
+  "description": "Filter by a topic that is not 32 bytes. The request fails with -32602. See MIP-16 eth_queryLogs Filter.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
+        "fields": {
+          "logs": [
+            "logIndex"
+          ]
+        },
+        "filter": {
+          "topics": [
+            "0x3a420a01"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+      "code": -32602,
+      "message": "Invalid params"
+    }
+  }
+}

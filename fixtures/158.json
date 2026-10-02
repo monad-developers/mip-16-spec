@@ -1,0 +1,17 @@
+{
+  "description": "Send params as an empty array. params must be an array with one element, so the request fails with -32602. See MIP-16 Request.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": []
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+      "code": -32602,
+      "message": "Invalid params"
+    }
+  }
+}

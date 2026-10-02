@@ -1,0 +1,25 @@
+{
+  "description": "Set a fields value to \"some\". A fields value must be an array of field names or \"all\", so the request fails with -32602. See MIP-16 Fields and relations.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
+        "fields": {
+          "traces": "some"
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+      "code": -32602,
+      "message": "Invalid params"
+    }
+  }
+}

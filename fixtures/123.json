@@ -1,0 +1,27 @@
+{
+  "description": "Set toBlock to 0xffffffff. The block does not exist yet, so it is outside the availability window and the request fails with -32001. See MIP-16 Block range.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0xffffffff",
+        "fields": {
+          "traces": [
+            "traceAddress"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+      "code": -32001,
+      "message": "Resource not found"
+    }
+  }
+}

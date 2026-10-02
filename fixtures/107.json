@@ -1,0 +1,28 @@
+{
+  "description": "Set order to \"ascending\". order must be \"asc\" or \"desc\". The request fails with -32602. See MIP-16 Request.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
+        "fields": {
+          "logs": [
+            "logIndex"
+          ]
+        },
+        "order": "ascending"
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+      "code": -32602,
+      "message": "Invalid params"
+    }
+  }
+}
