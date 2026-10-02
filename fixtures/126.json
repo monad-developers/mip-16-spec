@@ -1,0 +1,28 @@
+{
+  "description": "Set target to 0x0. target must be at least 0x1, so the request fails with -32602. See MIP-16 Block-aligned pagination.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
+        "fields": {
+          "transactions": [
+            "hash"
+          ]
+        },
+        "target": "0x0"
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+      "code": -32602,
+      "message": "Invalid params"
+    }
+  }
+}

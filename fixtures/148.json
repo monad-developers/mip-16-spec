@@ -1,0 +1,30 @@
+{
+  "description": "Filter by a selector that is not 4 bytes. The request fails with -32602. See MIP-16 eth_queryTransactions Filter.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
+        "fields": {
+          "transactions": [
+            "hash"
+          ]
+        },
+        "filter": {
+          "selector": "0x6463ff"
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+      "code": -32602,
+      "message": "Invalid params"
+    }
+  }
+}

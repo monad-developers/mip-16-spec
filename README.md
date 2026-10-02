@@ -97,9 +97,9 @@ The runner does these checks in order, and stops at the first stage that fails. 
 | Transport | The response arrives before `REQUEST_TIMEOUT_MS` and is JSON. |
 | Envelope | `jsonrpc` is `"2.0"`, `id` matches, and the response has `result` or `error`, but not both. |
 | Error | An expected error has the same `error.code`. An unexpected error fails. |
-| Page | On each page: valid block references, the correct keys and encodings, sort order without duplicates, relations without duplicates or missing references, objects only in the page's blocks, and no page that ends after the block where `target` ends it. |
+| Page | On each page: valid block references, each selected field and no other field, encodings with lowercase hex, sort order without duplicates, relations without duplicates or missing references, objects only in the page's blocks, `reverted` true for each frame with an `error`, a `value` more than zero for each transfer, and no page that ends after the block where `target` ends it. |
 | Pagination | Each next page succeeds, starts at the requested `fromBlock`, has the same `toBlock`, and links to the previous page by hash. |
-| Comparison | The merged result is equal to the expected `result`. Key order and hex letter case are not significant. |
+| Comparison | The merged result is equal to the expected `result`. Key order is not significant. |
 
 Some page checks need specific fields, such as the fields of the ordering key. If a fixture does not select them, only the comparison finds the problem.
 
@@ -119,9 +119,5 @@ The fixtures use Monad mainnet blocks 50,000,005 to 50,000,018 (`0x2faf085` to `
 
 MIP-16 does not yet specify these items. The fixtures do not test them until MIP-16 specifies them.
 
-- **Hex letter case.** MIP-16 does not specify lowercase or uppercase hex in responses. The MIP-16 example uses both forms and also an EIP-55 checksum address.
-- **Unselected fields.** MIP-16 does not state that a server must not return fields that the request does not select.
 - **Empty filter arrays.** MIP-16 does not specify the result of a filter such as `"from": []`.
-- **Unknown field names.** MIP-16 specifies `-32602` for an unknown `fields` key, but not for an unknown field name in a `fields` array.
-- **Signature encoding.** MIP-16 specifies `r` and `s` as `DATA`. Nodes return them as `QUANTITY`, as in `eth_getTransactionByHash`, so a value can have an odd number of hex digits. The fixtures and the runner use `QUANTITY`.
 - **Trace error text.** MIP-16 does not specify the `error` string of a trace. The fixtures contain the text from the Monad `callTracer`, for example `"error"`. A different correct server can use different text.

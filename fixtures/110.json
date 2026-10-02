@@ -1,0 +1,27 @@
+{
+  "description": "Set fromBlock after toBlock in asc order. The range is inverted, so the request fails with -32602. See MIP-16 Block range.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryBlocks",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf090",
+        "fields": {
+          "blocks": [
+            "number"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+      "code": -32602,
+      "message": "Invalid params"
+    }
+  }
+}

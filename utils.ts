@@ -36,6 +36,7 @@ type ValueType =
   | "boolean"
   | "string"
   | "stringOrNull"
+  | "parity"
   | "hashArray"
   | "dataArray"
   | "numberArray"
@@ -44,10 +45,11 @@ type ValueType =
 type Availability = "required" | "fork" | "type";
 type FieldSpec = [ValueType, Availability];
 
-const QUANTITY = /^0x(0|[1-9a-f][0-9a-f]*)$/i;
-const DATA = /^0x([0-9a-f]{2})*$/i;
-const HASH = /^0x[0-9a-f]{64}$/i;
-const ADDRESS = /^0x[0-9a-f]{40}$/i;
+// Hex in a response must be lowercase. The patterns do not accept uppercase letters.
+const QUANTITY = /^0x(0|[1-9a-f][0-9a-f]*)$/;
+const DATA = /^0x([0-9a-f]{2})*$/;
+const HASH = /^0x[0-9a-f]{64}$/;
+const ADDRESS = /^0x[0-9a-f]{40}$/;
 
 function isValue(type: ValueType, v: unknown): boolean {
   const str = typeof v === "string";
@@ -68,6 +70,8 @@ function isValue(type: ValueType, v: unknown): boolean {
       return str;
     case "stringOrNull":
       return v === null || str;
+    case "parity":
+      return v === "0x0" || v === "0x1";
     case "hashArray":
       return Array.isArray(v) && v.every((x) => isValue("hash", x));
     case "dataArray":
@@ -153,8 +157,9 @@ export const SCHEMAS: Record<string, Record<string, FieldSpec>> = {
     maxFeePerBlobGas: ["quantity", "fork"],
     blobVersionedHashes: ["hashArray", "fork"],
     v: ["quantity", "required"],
-    yParity: ["quantity", "type"],
-    // MIP-16 says DATA. Nodes encode r and s as QUANTITY, as in eth_getTransactionByHash. See README Open Questions.
+    // yParity is 0x0 or 0x1, as in eth_getTransactionByHash.
+    yParity: ["parity", "type"],
+    // r and s are QUANTITY, as in eth_getTransactionByHash.
     r: ["quantity", "required"],
     s: ["quantity", "required"],
     blockTimestamp: ["quantity", "required"],
@@ -247,14 +252,12 @@ function compareObjects(type: string, a: Record<string, unknown>, b: Record<stri
   return 0;
 }
 
-/** Makes hex letter case not significant, because MIP-16 does not yet specify it. See README Open Questions. */
-export function normalize(v: unknown): unknown {
-  if (typeof v === "string") return v.startsWith("0x") ? v.toLowerCase() : v;
-  if (Array.isArray(v)) return v.map(normalize);
-  if (v !== null && typeof v === "object") {
-    return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, normalize(x)]));
-  }
-  return v;
+/** Tells if a value contains a hex string with an uppercase letter, so that a problem message can say why it is invalid. */
+function hasUppercaseHex(v: unknown): boolean {
+  if (typeof v === "string") return /^0x/i.test(v) && v !== v.toLowerCase();
+  if (Array.isArray(v)) return v.some(hasUppercaseHex);
+  if (v !== null && typeof v === "object") return Object.values(v).some(hasUppercaseHex);
+  return false;
 }
 
 // Transport
@@ -355,7 +358,7 @@ export function checkFields(method: string, params: QueryParams, result: QueryRe
       if (missing.length || extra.length) problems.push(`${at} has the wrong keys.${keyReport(required, permitted, received)}`);
       for (const [name, value] of Object.entries(row)) {
         const spec = schema[name];
-        if (spec && !isValue(spec[0], value)) problems.push(`${at}.${name} is not a valid ${spec[0]}: ${short(value)}`);
+        if (spec && !isValue(spec[0], value)) problems.push(`${at}.${name} is not a valid ${spec[0]}${hasUppercaseHex(value) ? " (hex must be lowercase)" : ""}: ${short(value)}`);
       }
     });
   }
@@ -382,7 +385,7 @@ export function checkBlockRefs(result: QueryResult): string[] {
   for (const k of ["fromBlock", "toBlock", "cursorBlock"] as const) {
     const ref = result[k];
     if (!ref || !isValue("quantity", ref.number) || !isValue("hash", ref.hash) || !isValue("hash", ref.parentHash)) {
-      problems.push(`${k} is not a valid block reference: ${JSON.stringify(ref)}`);
+      problems.push(`${k} is not a valid block reference${hasUppercaseHex(ref) ? " (hex must be lowercase)" : ""}: ${JSON.stringify(ref)}`);
     }
   }
   return problems;
@@ -421,14 +424,14 @@ export function checkRelations(method: string, result: QueryResult): string[] {
     if (ids.some((id) => id === undefined)) continue;
     const seen = new Set<string>();
     ids.forEach((id, i) => {
-      const k = String(id).toLowerCase();
+      const k = String(id);
       if (seen.has(k)) problems.push(`data.${rel}[${i}] occurs more than one time`);
       seen.add(k);
     });
     if (!primaries.every((p) => join.primary in p)) continue;
-    const refs = new Set(primaries.map((p) => String(p[join.primary]).toLowerCase()));
+    const refs = new Set(primaries.map((p) => String(p[join.primary])));
     ids.forEach((id, i) => {
-      if (!refs.has(String(id).toLowerCase())) problems.push(`data.${rel}[${i}] is not referenced by a primary object`);
+      if (!refs.has(String(id))) problems.push(`data.${rel}[${i}] is not referenced by a primary object`);
     });
     for (const r of refs) {
       if (!seen.has(r)) problems.push(`data.${rel} has no object for the reference ${r}`);
@@ -513,6 +516,23 @@ export function checkTargetCursor(
   return [];
 }
 
+/**
+ * Checks rules between the values of one trace or transfer. A frame with a non-null error has reverted true.
+ * A transfer has a value more than zero. See MIP-16 eth_queryTraces Response and eth_queryTransfers.
+ */
+export function checkFrames(result: QueryResult): string[] {
+  const problems: string[] = [];
+  for (const type of ["traces", "transfers"]) {
+    const rows = result.data?.[type];
+    if (!Array.isArray(rows)) continue;
+    rows.forEach((row, i) => {
+      if (typeof row.error === "string" && row.reverted === false) problems.push(`data.${type}[${i}] has error ${short(row.error)}, but reverted is false`);
+      if (type === "transfers" && row.value === "0x0") problems.push(`data.${type}[${i}] has value 0x0, but a transfer has a value more than zero`);
+    });
+  }
+  return problems;
+}
+
 /** Does all the checks on one successful page. */
 export function checkPage(method: string, params: QueryParams, result: QueryResult): string[] {
   const refs = checkBlockRefs(result);
@@ -523,6 +543,7 @@ export function checkPage(method: string, params: QueryParams, result: QueryResu
     ...checkRelations(method, result),
     ...checkBlockAlignment(params, result),
     ...checkTarget(method, params, result),
+    ...checkFrames(result),
   ];
 }
 
@@ -549,7 +570,7 @@ export function mergePages(method: string, pages: QueryResult[]): QueryResult {
     }
     const seen = new Set<string>();
     data[key] = rows.filter((r) => {
-      const id = String(r[join.related]).toLowerCase();
+      const id = String(r[join.related]);
       if (seen.has(id)) return false;
       seen.add(id);
       return true;
@@ -596,16 +617,16 @@ export async function collectPages(
     const pageProblems = [...checkPage(method, nextParams, next), ...(checkExtra?.(next) ?? [])];
     problems.push(...pageProblems.map((p) => `${at}: ${p}`));
     if (pageProblems.length) break;
-    if (next.fromBlock.number.toLowerCase() !== nextParams.fromBlock!.toLowerCase()) {
+    if (next.fromBlock.number !== nextParams.fromBlock) {
       problems.push(`${at} fromBlock is ${next.fromBlock.number}, not the requested ${nextParams.fromBlock}`);
     }
     if (toBigInt(next.toBlock.number) !== end) {
       problems.push(`${at} toBlock is ${next.toBlock.number}, not ${first.toBlock.number} as on page 1`);
     }
-    if (!desc && next.fromBlock.parentHash.toLowerCase() !== page.cursorBlock.hash.toLowerCase()) {
+    if (!desc && next.fromBlock.parentHash !== page.cursorBlock.hash) {
       problems.push(`${at} fromBlock.parentHash does not link to the previous cursorBlock.hash`);
     }
-    if (desc && page.cursorBlock.parentHash.toLowerCase() !== next.fromBlock.hash.toLowerCase()) {
+    if (desc && page.cursorBlock.parentHash !== next.fromBlock.hash) {
       problems.push(`${at} fromBlock.hash does not link to the previous cursorBlock.parentHash`);
     }
     if (problems.length) break;
@@ -754,6 +775,6 @@ async function runChecked(url: string, fixture: Fixture, report: OnRequest, onNo
   const paged = await collectPages(url, method, params, first, report, checkTargetPage);
   if (paged.problems.length) return { status: "failed", problems: paged.problems, pages: paged.pages };
 
-  const differences = diff(normalize(expected.result), normalize(paged.result));
+  const differences = diff(expected.result, paged.result);
   return { status: differences.length ? "failed" : "passed", problems: differences, pages: paged.pages };
 }

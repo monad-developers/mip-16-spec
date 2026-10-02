@@ -1,0 +1,27 @@
+{
+  "description": "Set toBlock to the tag \"pending\". MIP-16 accepts only \"latest\", \"earliest\", \"safe\", and \"finalized\", so the request fails with -32602. See MIP-16 Block range.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "pending",
+        "fields": {
+          "logs": [
+            "logIndex"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+      "code": -32602,
+      "message": "Invalid params"
+    }
+  }
+}

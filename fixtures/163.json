@@ -1,0 +1,370 @@
+{
+  "description": "Add an unknown field to the request object. The server ignores it, as eth_getLogs does, so the result is the same as in 003.json. See MIP-16 Request.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
+        "fields": {
+          "traces": [
+            "transactionIndex",
+            "traceAddress",
+            "type",
+            "from",
+            "to"
+          ]
+        },
+        "notAField": 1
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "traces": [
+          {
+            "transactionIndex": "0x0",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000"
+          },
+          {
+            "transactionIndex": "0x1",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x5c4ec8d4fc6e74f8a7a6df6d36017eeffff9301f",
+            "to": "0x9f16b181103c93a587f1235aa3982a64126f323d"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x62eb1477ebb9aaa9600d2784b349e486f0d6299d",
+            "to": "0xed1448a8f1859970b2c96d184938690353e88330"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0
+            ],
+            "type": "DELEGATECALL",
+            "from": "0xed1448a8f1859970b2c96d184938690353e88330",
+            "to": "0xf0995a209e02b44554423b311ec99077525971ef"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              0
+            ],
+            "type": "STATICCALL",
+            "from": "0xed1448a8f1859970b2c96d184938690353e88330",
+            "to": "0xbdc776284bf593981b1f0237f053a7ad11eb596f"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              0,
+              0
+            ],
+            "type": "DELEGATECALL",
+            "from": "0xbdc776284bf593981b1f0237f053a7ad11eb596f",
+            "to": "0xea2cc8769fb04ff1893ed11cf517b7f040c823cd"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              1
+            ],
+            "type": "CALL",
+            "from": "0xed1448a8f1859970b2c96d184938690353e88330",
+            "to": "0xbdc776284bf593981b1f0237f053a7ad11eb596f"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              1,
+              0
+            ],
+            "type": "DELEGATECALL",
+            "from": "0xbdc776284bf593981b1f0237f053a7ad11eb596f",
+            "to": "0xea2cc8769fb04ff1893ed11cf517b7f040c823cd"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              1,
+              0,
+              0
+            ],
+            "type": "CALL",
+            "from": "0xbdc776284bf593981b1f0237f053a7ad11eb596f",
+            "to": "0x2a68ba1833cdf93fa9da1eebd7f46242ad8e90c5"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "type": "DELEGATECALL",
+            "from": "0x2a68ba1833cdf93fa9da1eebd7f46242ad8e90c5",
+            "to": "0x57cf97fe1fac7d78b07e7e0761410cb2e91f0ca7"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              2
+            ],
+            "type": "CALL",
+            "from": "0xed1448a8f1859970b2c96d184938690353e88330",
+            "to": "0xbdc776284bf593981b1f0237f053a7ad11eb596f"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              2,
+              0
+            ],
+            "type": "DELEGATECALL",
+            "from": "0xbdc776284bf593981b1f0237f053a7ad11eb596f",
+            "to": "0xea2cc8769fb04ff1893ed11cf517b7f040c823cd"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              3
+            ],
+            "type": "CALL",
+            "from": "0xed1448a8f1859970b2c96d184938690353e88330",
+            "to": "0xbdc776284bf593981b1f0237f053a7ad11eb596f"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              3,
+              0
+            ],
+            "type": "DELEGATECALL",
+            "from": "0xbdc776284bf593981b1f0237f053a7ad11eb596f",
+            "to": "0xea2cc8769fb04ff1893ed11cf517b7f040c823cd"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              3,
+              0,
+              0
+            ],
+            "type": "CALL",
+            "from": "0xbdc776284bf593981b1f0237f053a7ad11eb596f",
+            "to": "0x2a68ba1833cdf93fa9da1eebd7f46242ad8e90c5"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              3,
+              0,
+              0,
+              0
+            ],
+            "type": "DELEGATECALL",
+            "from": "0x2a68ba1833cdf93fa9da1eebd7f46242ad8e90c5",
+            "to": "0x57cf97fe1fac7d78b07e7e0761410cb2e91f0ca7"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              4
+            ],
+            "type": "CALL",
+            "from": "0xed1448a8f1859970b2c96d184938690353e88330",
+            "to": "0xbdc776284bf593981b1f0237f053a7ad11eb596f"
+          },
+          {
+            "transactionIndex": "0x2",
+            "traceAddress": [
+              0,
+              4,
+              0
+            ],
+            "type": "DELEGATECALL",
+            "from": "0xbdc776284bf593981b1f0237f053a7ad11eb596f",
+            "to": "0xea2cc8769fb04ff1893ed11cf517b7f040c823cd"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x4ea043757f7d2e0b386b26e57633ed97863ff63d",
+            "to": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0
+            ],
+            "type": "DELEGATECALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0xe4bfe4071d363e1d4274fb8f79cb510b75913020"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              0
+            ],
+            "type": "STATICCALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0x0000000000000000000000000000000000000001"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              1
+            ],
+            "type": "STATICCALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0x0000000000000000000000000000000000000001"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              2
+            ],
+            "type": "STATICCALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0x0000000000000000000000000000000000000001"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              3
+            ],
+            "type": "STATICCALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0x0000000000000000000000000000000000000001"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              4
+            ],
+            "type": "STATICCALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0x0000000000000000000000000000000000000001"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              5
+            ],
+            "type": "STATICCALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0x0000000000000000000000000000000000000001"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              6
+            ],
+            "type": "STATICCALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0x0000000000000000000000000000000000000001"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              7
+            ],
+            "type": "STATICCALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0x0000000000000000000000000000000000000001"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              8
+            ],
+            "type": "STATICCALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0x0000000000000000000000000000000000000001"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              9
+            ],
+            "type": "STATICCALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0x0000000000000000000000000000000000000001"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              10
+            ],
+            "type": "STATICCALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0x0000000000000000000000000000000000000001"
+          },
+          {
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              0,
+              11
+            ],
+            "type": "STATICCALL",
+            "from": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "to": "0x0000000000000000000000000000000000000001"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}
