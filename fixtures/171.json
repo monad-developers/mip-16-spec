@@ -1,0 +1,24 @@
+{
+  "description": "Set fromBlock to \"latest\" and omit toBlock. In asc order, toBlock defaults to \"latest\". The result depends on the server state, so the runner does the checks but does not compare. See MIP-16 Block range.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "latest",
+        "fields": {
+          "transactions": [
+            "blockNumber",
+            "transactionIndex",
+            "hash"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1
+  }
+}

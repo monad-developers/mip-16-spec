@@ -1,0 +1,26 @@
+{
+  "description": "Set fromBlock to \"latest\" and toBlock to \"finalized\" in desc order. The result depends on the server state, so the runner does the checks but does not compare. See MIP-16 Block range.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "latest",
+        "toBlock": "finalized",
+        "order": "desc",
+        "fields": {
+          "traces": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1
+  }
+}

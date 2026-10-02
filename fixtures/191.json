@@ -1,0 +1,25 @@
+{
+  "description": "Set fromBlock to \"finalized\" and toBlock to \"safe\". The finalized block is not after the safe block, so the range is not inverted. The result depends on the server state, so the runner does the checks but does not compare. See MIP-16 Block range.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "finalized",
+        "toBlock": "safe",
+        "fields": {
+          "transactions": [
+            "blockNumber",
+            "transactionIndex",
+            "hash"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1
+  }
+}
