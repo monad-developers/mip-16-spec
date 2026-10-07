@@ -1,5 +1,5 @@
 {
-  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
+  "description": "Filter transactions by an empty from array. A filter array must not be empty, so the request fails with -32602. See MIP-16 Filters.",
   "undecided": true,
   "request": {
     "jsonrpc": "2.0",
@@ -9,16 +9,14 @@
       {
         "fromBlock": "0x2faf091",
         "toBlock": "0x2faf091",
+        "filter": {
+          "from": []
+        },
         "fields": {
           "transactions": [
-            "hash",
-            "blockNumber",
-            "transactionIndex",
-            "from",
-            "to"
+            "hash"
           ]
-        },
-        "notAField": 1
+        }
       }
     ]
   },

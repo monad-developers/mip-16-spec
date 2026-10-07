@@ -1,6 +1,5 @@
 {
-  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
-  "undecided": true,
+  "description": "Select topics in transactions. The field is in the logs schema, but not in the transactions schema. The request fails with -32602. See MIP-16 Fields and relations.",
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
@@ -12,13 +11,9 @@
         "fields": {
           "transactions": [
             "hash",
-            "blockNumber",
-            "transactionIndex",
-            "from",
-            "to"
+            "topics"
           ]
-        },
-        "notAField": 1
+        }
       }
     ]
   },

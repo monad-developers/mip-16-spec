@@ -1,24 +1,19 @@
 {
-  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
-  "undecided": true,
+  "description": "Select nonce in transfers. The field is in the transactions schema, but not in the transfers schema. The request fails with -32602. See MIP-16 Fields and relations.",
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
-    "method": "eth_queryTraces",
+    "method": "eth_queryTransfers",
     "params": [
       {
         "fromBlock": "0x2faf091",
         "toBlock": "0x2faf091",
         "fields": {
-          "traces": [
-            "transactionIndex",
+          "transfers": [
             "traceAddress",
-            "type",
-            "from",
-            "to"
+            "nonce"
           ]
-        },
-        "notAField": 1
+        }
       }
     ]
   },

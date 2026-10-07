@@ -1,0 +1,137 @@
+{
+  "description": "Get all transfers in a block that has DELEGATECALL frames with a value more than zero. A DELEGATECALL frame does not move value, so the result has only CALL frames. See MIP-16 eth_queryTransfers.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x2faf085",
+        "toBlock": "0x2faf085",
+        "fields": {
+          "transfers": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress",
+            "type",
+            "from",
+            "to",
+            "value"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transfers": [
+          {
+            "blockNumber": "0x2faf085",
+            "transactionIndex": "0x0",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000",
+            "value": "0x15af1d78b58c40000"
+          },
+          {
+            "blockNumber": "0x2faf085",
+            "transactionIndex": "0x1",
+            "traceAddress": [
+              2,
+              1,
+              0
+            ],
+            "type": "CALL",
+            "from": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+            "to": "0x2f84fb8982073f39ba47c7fcc29119af074abbcb",
+            "value": "0x878678326eac9000000"
+          },
+          {
+            "blockNumber": "0x2faf085",
+            "transactionIndex": "0x1",
+            "traceAddress": [
+              2,
+              2
+            ],
+            "type": "CALL",
+            "from": "0x2f84fb8982073f39ba47c7fcc29119af074abbcb",
+            "to": "0x131a2e70a5b31a517a74b8c567149bc294470da9",
+            "value": "0x878678326eac9000000"
+          },
+          {
+            "blockNumber": "0x2faf085",
+            "transactionIndex": "0x1",
+            "traceAddress": [
+              2,
+              2,
+              0,
+              1
+            ],
+            "type": "CALL",
+            "from": "0x131a2e70a5b31a517a74b8c567149bc294470da9",
+            "to": "0x2a68ba1833cdf93fa9da1eebd7f46242ad8e90c5",
+            "value": "0x878678326eac9000000"
+          },
+          {
+            "blockNumber": "0x2faf085",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              2,
+              1,
+              0
+            ],
+            "type": "CALL",
+            "from": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+            "to": "0x2f84fb8982073f39ba47c7fcc29119af074abbcb",
+            "value": "0x14542ba12a337c00000"
+          },
+          {
+            "blockNumber": "0x2faf085",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              2,
+              2
+            ],
+            "type": "CALL",
+            "from": "0x2f84fb8982073f39ba47c7fcc29119af074abbcb",
+            "to": "0x131a2e70a5b31a517a74b8c567149bc294470da9",
+            "value": "0x14542ba12a337c00000"
+          },
+          {
+            "blockNumber": "0x2faf085",
+            "transactionIndex": "0x3",
+            "traceAddress": [
+              2,
+              2,
+              0,
+              1
+            ],
+            "type": "CALL",
+            "from": "0x131a2e70a5b31a517a74b8c567149bc294470da9",
+            "to": "0x2a68ba1833cdf93fa9da1eebd7f46242ad8e90c5",
+            "value": "0x14542ba12a337c00000"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf085",
+        "hash": "0x0d14a01f7ea6a171fb8d53c735caf6ed23cba4c0bf97c83dd7deef1c336ca85b",
+        "parentHash": "0x4445bf08319eb3e8adbedbc2a9ab04a7523b5780c3827c35963ee522a340be56"
+      },
+      "toBlock": {
+        "number": "0x2faf085",
+        "hash": "0x0d14a01f7ea6a171fb8d53c735caf6ed23cba4c0bf97c83dd7deef1c336ca85b",
+        "parentHash": "0x4445bf08319eb3e8adbedbc2a9ab04a7523b5780c3827c35963ee522a340be56"
+      },
+      "cursorBlock": {
+        "number": "0x2faf085",
+        "hash": "0x0d14a01f7ea6a171fb8d53c735caf6ed23cba4c0bf97c83dd7deef1c336ca85b",
+        "parentHash": "0x4445bf08319eb3e8adbedbc2a9ab04a7523b5780c3827c35963ee522a340be56"
+      }
+    }
+  }
+}

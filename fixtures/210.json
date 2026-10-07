@@ -1,0 +1,55 @@
+{
+  "description": "Filter transfers by the same targets as 209.json. A DELEGATECALL frame does not move value, so it is not a transfer. See MIP-16 eth_queryTransfers.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x2faf085",
+        "toBlock": "0x2faf085",
+        "filter": {
+          "to": [
+            "0xea2cc8769fb04ff1893ed11cf517b7f040c823cd",
+            "0x57cf97fe1fac7d78b07e7e0761410cb2e91f0ca7"
+          ]
+        },
+        "fields": {
+          "transfers": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress",
+            "type",
+            "from",
+            "to",
+            "value"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transfers": []
+      },
+      "fromBlock": {
+        "number": "0x2faf085",
+        "hash": "0x0d14a01f7ea6a171fb8d53c735caf6ed23cba4c0bf97c83dd7deef1c336ca85b",
+        "parentHash": "0x4445bf08319eb3e8adbedbc2a9ab04a7523b5780c3827c35963ee522a340be56"
+      },
+      "toBlock": {
+        "number": "0x2faf085",
+        "hash": "0x0d14a01f7ea6a171fb8d53c735caf6ed23cba4c0bf97c83dd7deef1c336ca85b",
+        "parentHash": "0x4445bf08319eb3e8adbedbc2a9ab04a7523b5780c3827c35963ee522a340be56"
+      },
+      "cursorBlock": {
+        "number": "0x2faf085",
+        "hash": "0x0d14a01f7ea6a171fb8d53c735caf6ed23cba4c0bf97c83dd7deef1c336ca85b",
+        "parentHash": "0x4445bf08319eb3e8adbedbc2a9ab04a7523b5780c3827c35963ee522a340be56"
+      }
+    }
+  }
+}

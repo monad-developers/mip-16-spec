@@ -1,5 +1,5 @@
 {
-  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
+  "description": "Filter transactions by a to array that contains null. null is not a valid filter value, so the request fails with -32602. See MIP-16 Filters.",
   "undecided": true,
   "request": {
     "jsonrpc": "2.0",
@@ -9,16 +9,17 @@
       {
         "fromBlock": "0x2faf091",
         "toBlock": "0x2faf091",
-        "fields": {
-          "transactions": [
-            "hash",
-            "blockNumber",
-            "transactionIndex",
-            "from",
-            "to"
+        "filter": {
+          "to": [
+            "0x9f16b181103c93a587f1235aa3982a64126f323d",
+            null
           ]
         },
-        "notAField": 1
+        "fields": {
+          "transactions": [
+            "hash"
+          ]
+        }
       }
     ]
   },

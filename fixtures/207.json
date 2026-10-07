@@ -1,24 +1,22 @@
 {
-  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
-  "undecided": true,
+  "description": "Select traceAddress in the transactions relation. The field is in the traces schema, but not in the transactions schema. The request fails with -32602. See MIP-16 Fields and relations.",
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
-    "method": "eth_queryTransactions",
+    "method": "eth_queryTraces",
     "params": [
       {
         "fromBlock": "0x2faf091",
         "toBlock": "0x2faf091",
         "fields": {
+          "traces": [
+            "traceAddress"
+          ],
           "transactions": [
             "hash",
-            "blockNumber",
-            "transactionIndex",
-            "from",
-            "to"
+            "traceAddress"
           ]
-        },
-        "notAField": 1
+        }
       }
     ]
   },

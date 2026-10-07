@@ -1,5 +1,5 @@
 {
-  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
+  "description": "Select no fields in traces. A fields value must not be an empty array, so the request fails with -32602. See MIP-16 Fields and relations.",
   "undecided": true,
   "request": {
     "jsonrpc": "2.0",
@@ -10,15 +10,8 @@
         "fromBlock": "0x2faf091",
         "toBlock": "0x2faf091",
         "fields": {
-          "traces": [
-            "transactionIndex",
-            "traceAddress",
-            "type",
-            "from",
-            "to"
-          ]
-        },
-        "notAField": 1
+          "traces": []
+        }
       }
     ]
   },
