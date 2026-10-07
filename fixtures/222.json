@@ -1,24 +1,22 @@
 {
-  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
+  "description": "Filter blocks by an empty miner array. A filter array must not be empty, so the request fails with -32602. See MIP-16 Filters.",
   "undecided": true,
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
-    "method": "eth_queryTransactions",
+    "method": "eth_queryBlocks",
     "params": [
       {
         "fromBlock": "0x2faf091",
         "toBlock": "0x2faf091",
-        "fields": {
-          "transactions": [
-            "hash",
-            "blockNumber",
-            "transactionIndex",
-            "from",
-            "to"
-          ]
+        "filter": {
+          "miner": []
         },
-        "notAField": 1
+        "fields": {
+          "blocks": [
+            "number"
+          ]
+        }
       }
     ]
   },

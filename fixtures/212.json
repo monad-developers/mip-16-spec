@@ -1,6 +1,5 @@
 {
-  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
-  "undecided": true,
+  "description": "Select maxFeePerBlobGas in transactions. Monad does not accept type 0x3 transactions, so the Monad transactions schema has no blob fields. The request fails with -32602. See MIP-16 Fields and relations and Appendix: Monad Response Schemas.",
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
@@ -12,13 +11,9 @@
         "fields": {
           "transactions": [
             "hash",
-            "blockNumber",
-            "transactionIndex",
-            "from",
-            "to"
+            "maxFeePerBlobGas"
           ]
-        },
-        "notAField": 1
+        }
       }
     ]
   },

@@ -1,24 +1,22 @@
 {
-  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
+  "description": "Filter logs by an empty address array. A filter array must not be empty, so the request fails with -32602. See MIP-16 Filters.",
   "undecided": true,
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
-    "method": "eth_queryTransactions",
+    "method": "eth_queryLogs",
     "params": [
       {
         "fromBlock": "0x2faf091",
         "toBlock": "0x2faf091",
-        "fields": {
-          "transactions": [
-            "hash",
-            "blockNumber",
-            "transactionIndex",
-            "from",
-            "to"
-          ]
+        "filter": {
+          "address": []
         },
-        "notAField": 1
+        "fields": {
+          "logs": [
+            "logIndex"
+          ]
+        }
       }
     ]
   },

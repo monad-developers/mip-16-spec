@@ -1,0 +1,68 @@
+{
+  "description": "Filter logs by topics [null, null]. As in eth_getLogs, each entry is a condition: a log matches only if it has at least two topics. Thus the result has only the log with three topics, and not the seven logs with one topic. See MIP-16 eth_queryLogs Filter.",
+  "undecided": true,
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf08b",
+        "toBlock": "0x2faf08b",
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "transactionIndex",
+            "address",
+            "topics",
+            "data"
+          ]
+        },
+        "filter": {
+          "topics": [
+            null,
+            null
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "logs": [
+          {
+            "blockNumber": "0x2faf08b",
+            "logIndex": "0x0",
+            "transactionIndex": "0x0",
+            "address": "0x0000000000000000000000000000000000001000",
+            "topics": [
+              "0x3a420a01486b6b28d6ae89c51f5c3bde3e0e74eecbb646a0c481ccba3aae3754",
+              "0x000000000000000000000000000000000000000000000000000000000000000c",
+              "0x0000000000000000000000006f49a8f621353f12378d0046e7d7e4b9b249dc9e"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000138400eca364a000000000000000000000000000000000000000000000000000000000000000003e8"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "toBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "cursorBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      }
+    }
+  }
+}

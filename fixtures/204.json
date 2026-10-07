@@ -1,6 +1,5 @@
 {
-  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
-  "undecided": true,
+  "description": "Select logIndex in traces. The field is in the logs schema, but not in the traces schema. The request fails with -32602. See MIP-16 Fields and relations.",
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
@@ -11,14 +10,10 @@
         "toBlock": "0x2faf091",
         "fields": {
           "traces": [
-            "transactionIndex",
             "traceAddress",
-            "type",
-            "from",
-            "to"
+            "logIndex"
           ]
-        },
-        "notAField": 1
+        }
       }
     ]
   },

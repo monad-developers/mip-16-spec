@@ -1,24 +1,19 @@
 {
-  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
-  "undecided": true,
+  "description": "Select transactionIndex in blocks. The field is in other schemas, but not in the blocks schema. The request fails with -32602. See MIP-16 Fields and relations.",
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
     "method": "eth_queryBlocks",
     "params": [
       {
-        "fromBlock": "0x2faf08a",
-        "toBlock": "0x2faf08d",
-        "order": "asc",
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
         "fields": {
           "blocks": [
             "number",
-            "hash",
-            "parentHash",
-            "timestamp"
+            "transactionIndex"
           ]
-        },
-        "notAField": 1
+        }
       }
     ]
   },

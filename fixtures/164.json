@@ -1,5 +1,6 @@
 {
-  "description": "Add an unknown field to the request object. The server ignores it, as eth_getLogs does, so the result is the same as in 004.json. See MIP-16 Request.",
+  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
+  "undecided": true,
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
@@ -26,44 +27,9 @@
   "response": {
     "jsonrpc": "2.0",
     "id": 1,
-    "result": {
-      "data": {
-        "transfers": [
-          {
-            "blockNumber": "0x2faf090",
-            "transactionIndex": "0x0",
-            "traceAddress": [],
-            "type": "CALL",
-            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
-            "to": "0x0000000000000000000000000000000000001000",
-            "value": "0x15af1d78b58c40000"
-          },
-          {
-            "blockNumber": "0x2faf091",
-            "transactionIndex": "0x0",
-            "traceAddress": [],
-            "type": "CALL",
-            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
-            "to": "0x0000000000000000000000000000000000001000",
-            "value": "0x15af1d78b58c40000"
-          }
-        ]
-      },
-      "fromBlock": {
-        "number": "0x2faf090",
-        "hash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8",
-        "parentHash": "0x3dc3c1b1e7c96f9f44ce90e3944c9108a24f0ec0564bfd5ab48caf472655874e"
-      },
-      "toBlock": {
-        "number": "0x2faf091",
-        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
-        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
-      },
-      "cursorBlock": {
-        "number": "0x2faf091",
-        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
-        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
-      }
+    "error": {
+      "code": -32602,
+      "message": "Invalid params"
     }
   }
 }

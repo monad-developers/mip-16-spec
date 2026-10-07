@@ -20,9 +20,13 @@ const root = join(import.meta.dir, "fixtures");
 for (const file of readdirSync(root).filter((f) => f.endsWith(".json")).sort()) {
   const fixture: Fixture = await Bun.file(join(root, file)).json();
   test(
-    `${file} ${fixture.request.method}: ${fixture.description}`,
+    `${file} ${fixture.request.method}: ${fixture.undecided ? "[undecided] " : ""}${fixture.description}`,
     async () => {
       const outcome = await runFixture(url, fixture, (t) => printTiming(file, t), (note) => console.log(`${file} note: ${note}`));
+      if (fixture.undecided) {
+        for (const problem of summarizeProblems(outcome.problems)) console.log(`${file} note (undecided): ${problem}`);
+        return;
+      }
       // Throw instead of expect(...).toEqual([]), so that Bun prints each problem one time, without an array diff.
       if (outcome.problems.length) throw new Error(summarizeProblems(outcome.problems).join("\n"));
     },

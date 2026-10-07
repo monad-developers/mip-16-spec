@@ -54,6 +54,7 @@ For each fetch request, the runner prints the duration, the `fromBlock` and `toB
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` | What the fixture tests. Refer to the MIP-16 section. |
+| `undecided` | `boolean` | Optional. If `true`, MIP-16 does not yet specify the behavior that the fixture tests. See [Undecided Fixtures](#undecided-fixtures). |
 | `request` | `object` | The full JSON-RPC request. The runner sends it without change. |
 | `response` | `object` | The expected JSON-RPC response. It contains `result` or `error`. If it contains neither, the request must succeed, but the runner does not compare the result. |
 
@@ -97,7 +98,7 @@ The runner does these checks in order, and stops at the first stage that fails. 
 | Transport | The response arrives before `REQUEST_TIMEOUT_MS` and is JSON. |
 | Envelope | `jsonrpc` is `"2.0"`, `id` matches, and the response has `result` or `error`, but not both. |
 | Error | An expected error has the same `error.code`. An unexpected error fails. |
-| Page | On each page: valid block references, each selected field and no other field, encodings with lowercase hex, sort order without duplicates, relations without duplicates or missing references, objects only in the page's blocks, `reverted` true for each frame with an `error`, a `value` more than zero for each transfer, and no page that ends after the block where `target` ends it. |
+| Page | On each page: valid block references, each selected field and no other field, encodings with lowercase hex, sort order without duplicates, relations without duplicates or missing references, objects only in the page's blocks, `reverted` true for each frame with an `error`, a `value` more than zero and no `DELEGATECALL` or `CALLCODE` type for each transfer, and no page that ends after the block where `target` ends it. |
 | Pagination | Each next page succeeds, starts at the requested `fromBlock`, has the same `toBlock`, and links to the previous page by hash. If `toBlock` is a tag, each next request uses the block number that the first page resolved. |
 | Comparison | The merged result is equal to the expected `result`. Key order is not significant. For the `error` of a trace or transfer, only `null` or not `null` is compared, not the text. |
 
@@ -111,12 +112,33 @@ A page can end early because of `target` or because of the server budget. The ru
 
 Fixtures `020`–`029` and `035`–`039` paginate because of `target`. Any fixture can paginate because of the budget. A server that ends the page early gets a note, not a failure, because the runner cannot tell this defect from the budget.
 
+## Response Schemas
+
+The runner uses the object types in [Appendix: Monad Response Schemas](https://github.com/monad-crypto/MIPs/pull/89). A fixture that selects `"all"`, or that omits `fields`, expects all the fields that the appendix defines for that object. A fixture that selects a field that the appendix does not define expects `-32602`.
+
+## Undecided Fixtures
+
+MIP-16 does not yet specify the behavior that these fixtures test. Each fixture has `"undecided": true`. The runner sends the request and does all the checks, but it prints each problem as a note and does not fail the fixture. When MIP-16 specifies the behavior, update the fixture to agree with MIP-16 and remove `undecided`.
+
+| Fixtures | Expected behavior | Status in MIP-16 |
+| --- | --- | --- |
+| `160`–`164` | An unknown field in the request object fails with `-32602`. | Not specified. The `-32602` list includes only unknown `fields` keys and unknown field names. |
+| `214` | If `fields` is present, it must contain the key of the primary objects. | Not specified. |
+| `216`–`221` | An empty `fields` array fails with `-32602`. | Not specified. |
+| `222`–`226` | An empty filter array fails with `-32602`. | Not specified. |
+| `227`–`229` | `topics` filters `[]`, `[null, null]`, and `[[]]` have the same result as in `eth_getLogs`. | Not clear. MIP-16 refers to `eth_getLogs`, but it also says that trailing `null` entries can be omitted. With that rule, `[null, null]` is the same as `[]`. |
+| `230`–`233` | A `null` filter value fails with `-32602`. | Not specified. |
+
 ## Required Block Range
 
 The fixtures use Monad mainnet blocks 50,000,005 to 50,000,018 (`0x2faf085` to `0x2faf092`). The node must serve this range for all five methods.
 
-## Open Questions
+## Untested Behavior
 
-MIP-16 does not yet specify these items. The fixtures do not test them until MIP-16 specifies them.
+The blocks in [Required Block Range](#required-block-range) do not contain these cases, so no fixture tests them:
 
-- **Empty filter arrays.** MIP-16 does not specify the result of a filter such as `"from": []`.
+- **Type `0x4` transactions.** No fixture tests `authorizationList`, or `gasPrice` on a type `0x4` transaction.
+- **Unprotected type `0x0` transactions.** No fixture tests a type `0x0` transaction without `chainId`, or a `v` of `0x1b` or `0x1c`.
+- **Blocks before `MONAD_FOUR`.** All fixture blocks are after block `0x1fe56b2`. No fixture tests a block without `requestsHash`.
+- **`CREATE` and `CREATE2` frames.** No fixture tests the `to` or `output` of a `CREATE` or `CREATE2` frame, or a failed frame with `to` set to `null`.
+- **`SELFDESTRUCT` frames.** No fixture tests the `to`, `value`, `gas`, or `input` of a `SELFDESTRUCT` frame, or a `SELFDESTRUCT` transfer.

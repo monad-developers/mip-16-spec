@@ -1,24 +1,20 @@
 {
-  "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
+  "description": "Select only the blocks relation, and omit the logs key. If fields is present, it must contain the key of the primary objects, so the request fails with -32602. See MIP-16 Fields and relations.",
   "undecided": true,
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
-    "method": "eth_queryTransactions",
+    "method": "eth_queryLogs",
     "params": [
       {
         "fromBlock": "0x2faf091",
         "toBlock": "0x2faf091",
         "fields": {
-          "transactions": [
-            "hash",
-            "blockNumber",
-            "transactionIndex",
-            "from",
-            "to"
+          "blocks": [
+            "number",
+            "timestamp"
           ]
-        },
-        "notAField": 1
+        }
       }
     ]
   },

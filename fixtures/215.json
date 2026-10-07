@@ -1,0 +1,153 @@
+{
+  "description": "Select fields that only some transaction types have. Block 0x2faf091 has type 0x0, 0x1, and 0x2 transactions. A field is absent on the types that do not have it, such as maxFeePerGas on type 0x0 and 0x1, and authorizationList on all of these types. See MIP-16 Appendix: Monad Response Schemas.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
+        "fields": {
+          "transactions": [
+            "hash",
+            "type",
+            "maxFeePerGas",
+            "maxPriorityFeePerGas",
+            "chainId",
+            "accessList",
+            "authorizationList",
+            "yParity"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transactions": [
+          {
+            "hash": "0xa6387e766f278e7e32e4041104f37b776db24404b2000f7801a4dffe4a01c340",
+            "type": "0x0",
+            "chainId": "0x8f"
+          },
+          {
+            "hash": "0xdcccd7b8a35c8119776ce2cbd96b8608a77d67c7977887fc3d43a39cabc0fb0d",
+            "type": "0x2",
+            "chainId": "0x8f",
+            "accessList": [
+              {
+                "address": "0x9f16b181103c93a587f1235aa3982a64126f323d",
+                "storageKeys": [
+                  "0x09106a952c62d13283c804ef46bdd6ecd9bd3c2ac7b8889f2b3136f192111467"
+                ]
+              }
+            ],
+            "maxFeePerGas": "0x2f0823640d",
+            "maxPriorityFeePerGas": "0x7735940d",
+            "yParity": "0x1"
+          },
+          {
+            "hash": "0x01ac25909db3ef01202582ee581b4ac0e45085634904b2c50fdd25ccc10cee30",
+            "type": "0x1",
+            "chainId": "0x8f",
+            "accessList": [
+              {
+                "address": "0xbdc776284bf593981b1f0237f053a7ad11eb596f",
+                "storageKeys": [
+                  "0x0000000000000000000000000000000000000000000000000000000000000031",
+                  "0x0000000000000000000000000000000000000000000000000000000000000035",
+                  "0x0000000000000000000000000000000000000000000000000000000000000045",
+                  "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                  "0x0000000000000000000000000000000000000000000000000000000000000000",
+                  "0x0000000000000000000000000000000000000000000000000000000000000039",
+                  "0xcc7015d964745bb1f33c30d4efc087c8a0b92fcef546b447cf0a021ce8cddd69",
+                  "0xb3adcffa448cf00a53ab879fd2836d84b7450b8f53e4fca6ed4dddbc6cf2c826",
+                  "0x0000000000000000000000000000000000000000000000000000000000000044",
+                  "0xfb7bbe450a18621e2f80a4817e2997d7e6be99d1595b6f86dba8a91601495a3d",
+                  "0x0000000000000000000000000000000000000000000000000000000000000046",
+                  "0x0000000000000000000000000000000000000000000000000000000000000043",
+                  "0x0000000000000000000000000000000000000000000000000000000000000004",
+                  "0x000000000000000000000000000000000000000000000000000000000000003d",
+                  "0x0000000000000000000000000000000000000000000000000000000000000041",
+                  "0xb1ad33d97f8b1b7f93e2429512c83b7863003030622c5b21139209d890690482",
+                  "0x0000000000000000000000000000000000000000000000000000000000000003",
+                  "0x0000000000000000000000000000000000000000000000000000000000000002",
+                  "0x0000000000000000000000000000000000000000000000000000000000000049"
+                ]
+              },
+              {
+                "address": "0xed1448a8f1859970b2c96d184938690353e88330",
+                "storageKeys": [
+                  "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                  "0x0000000000000000000000000000000000000000000000000000000000000002",
+                  "0x0000000000000000000000000000000000000000000000000000000000000003",
+                  "0x0000000000000000000000000000000000000000000000000000000000000004",
+                  "0x0000000000000000000000000000000000000000000000000000000000000005"
+                ]
+              },
+              {
+                "address": "0x2a68ba1833cdf93fa9da1eebd7f46242ad8e90c5",
+                "storageKeys": [
+                  "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                  "0x002718334d957d719be9276a6f7372c1c5a02be29e401d663b5829851d041a09",
+                  "0x0000000000000000000000000000000000000000000000000000000000000000",
+                  "0xf08e95aceaf270e6058763ce84a072213e70a2c042c3421c1e9718405dd455b9"
+                ]
+              },
+              {
+                "address": "0x57cf97fe1fac7d78b07e7e0761410cb2e91f0ca7",
+                "storageKeys": []
+              },
+              {
+                "address": "0x937485adadda4746d6918a241eac95373d59334d",
+                "storageKeys": []
+              },
+              {
+                "address": "0xea2cc8769fb04ff1893ed11cf517b7f040c823cd",
+                "storageKeys": []
+              }
+            ],
+            "yParity": "0x1"
+          },
+          {
+            "hash": "0x03270dd6a8127158b683a6dd1b02d567106d2a1410c92f39b0e8ca59e1a826da",
+            "type": "0x2",
+            "chainId": "0x8f",
+            "accessList": [],
+            "maxFeePerGas": "0x2f08236400",
+            "maxPriorityFeePerGas": "0x77359400",
+            "yParity": "0x1"
+          },
+          {
+            "hash": "0xba5c1f763532c183b01a7837d038865bcc98e252790f739759704b150c18618b",
+            "type": "0x2",
+            "chainId": "0x8f",
+            "accessList": [],
+            "maxFeePerGas": "0x1bf08eb000",
+            "maxPriorityFeePerGas": "0x0",
+            "yParity": "0x1"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
+    }
+  }
+}

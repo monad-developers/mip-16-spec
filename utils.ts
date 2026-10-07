@@ -23,7 +23,8 @@ export type RpcResponse = {
   result?: QueryResult;
   error?: { code: number; message?: string; data?: unknown };
 };
-export type Fixture = { description: string; request: RpcRequest; response: RpcResponse };
+// An undecided fixture tests behavior that MIP-16 does not yet specify. The runner reports its problems as notes. See README.
+export type Fixture = { description: string; undecided?: boolean; request: RpcRequest; response: RpcResponse };
 
 // Value types. See MIP-16 Value types.
 
@@ -40,7 +41,8 @@ type ValueType =
   | "hashArray"
   | "dataArray"
   | "numberArray"
-  | "accessList";
+  | "accessList"
+  | "authorizationList";
 
 type Availability = "required" | "fork" | "type";
 type FieldSpec = [ValueType, Availability];
@@ -89,15 +91,32 @@ function isValue(type: ValueType, v: unknown): boolean {
             isValue("hashArray", (e as any).storageKeys),
         )
       );
+    case "authorizationList":
+      return (
+        Array.isArray(v) &&
+        v.every(
+          (e) =>
+            typeof e === "object" &&
+            e !== null &&
+            isValue("quantity", (e as any).chainId) &&
+            isValue("address", (e as any).address) &&
+            isValue("quantity", (e as any).nonce) &&
+            isValue("parity", (e as any).yParity) &&
+            isValue("quantity", (e as any).r) &&
+            isValue("quantity", (e as any).s),
+        )
+      );
   }
 }
 
-// Object schemas. See the Response section of each method in MIP-16.
+// Object schemas. See MIP-16 Appendix: Monad Response Schemas. A field that is not in a schema is not supported, and
+// a request that selects it fails with -32602.
 
 const traceShape = {
   type: ["string", "required"],
   from: ["address", "required"],
-  to: ["address", "required"],
+  // to is null if a CREATE or CREATE2 frame failed.
+  to: ["addressOrNull", "required"],
   value: ["quantity", "required"],
   gas: ["quantity", "required"],
   gasUsed: ["quantity", "required"],
@@ -118,60 +137,58 @@ export const SCHEMAS: Record<string, Record<string, FieldSpec>> = {
     hash: ["hash", "required"],
     parentHash: ["hash", "required"],
     timestamp: ["quantity", "required"],
+    miner: ["address", "required"],
     nonce: ["data", "required"],
+    mixHash: ["hash", "required"],
     sha3Uncles: ["hash", "required"],
     logsBloom: ["data", "required"],
     transactionsRoot: ["hash", "required"],
     stateRoot: ["hash", "required"],
     receiptsRoot: ["hash", "required"],
-    miner: ["address", "required"],
-    difficulty: ["quantity", "fork"],
-    totalDifficulty: ["quantity", "fork"],
+    difficulty: ["quantity", "required"],
+    totalDifficulty: ["quantity", "required"],
     extraData: ["data", "required"],
     size: ["quantity", "required"],
     gasLimit: ["quantity", "required"],
     gasUsed: ["quantity", "required"],
-    baseFeePerGas: ["quantity", "fork"],
-    blobGasUsed: ["quantity", "fork"],
-    excessBlobGas: ["quantity", "fork"],
-    withdrawalsRoot: ["hash", "fork"],
-    parentBeaconBlockRoot: ["hash", "fork"],
+    baseFeePerGas: ["quantity", "required"],
+    withdrawalsRoot: ["hash", "required"],
+    blobGasUsed: ["quantity", "required"],
+    excessBlobGas: ["quantity", "required"],
+    parentBeaconBlockRoot: ["hash", "required"],
+    // requestsHash is present only in blocks from MONAD_FOUR.
+    requestsHash: ["hash", "fork"],
   },
   transactions: {
     hash: ["hash", "required"],
     blockHash: ["hash", "required"],
     blockNumber: ["quantity", "required"],
+    blockTimestamp: ["quantity", "required"],
     transactionIndex: ["quantity", "required"],
+    type: ["quantity", "required"],
     from: ["address", "required"],
     to: ["addressOrNull", "required"],
     nonce: ["quantity", "required"],
     input: ["data", "required"],
     value: ["quantity", "required"],
     gas: ["quantity", "required"],
-    gasPrice: ["quantity", "type"],
-    type: ["quantity", "required"],
-    chainId: ["quantity", "type"],
-    accessList: ["accessList", "type"],
+    // For types 0x2 and 0x4, gasPrice is the effective gas price.
+    gasPrice: ["quantity", "required"],
     maxFeePerGas: ["quantity", "type"],
     maxPriorityFeePerGas: ["quantity", "type"],
-    maxFeePerBlobGas: ["quantity", "fork"],
-    blobVersionedHashes: ["hashArray", "fork"],
+    chainId: ["quantity", "type"],
+    accessList: ["accessList", "type"],
+    authorizationList: ["authorizationList", "type"],
     v: ["quantity", "required"],
-    // yParity is 0x0 or 0x1, as in eth_getTransactionByHash.
     yParity: ["parity", "type"],
-    // r and s are QUANTITY, as in eth_getTransactionByHash.
     r: ["quantity", "required"],
     s: ["quantity", "required"],
-    blockTimestamp: ["quantity", "required"],
-    contractAddress: ["addressOrNull", "required"],
-    cumulativeGasUsed: ["quantity", "required"],
-    gasUsed: ["quantity", "required"],
-    effectiveGasPrice: ["quantity", "required"],
-    logsBloom: ["data", "required"],
     status: ["quantity", "required"],
-    root: ["data", "fork"],
-    blobGasUsed: ["quantity", "fork"],
-    blobGasPrice: ["quantity", "fork"],
+    gasUsed: ["quantity", "required"],
+    cumulativeGasUsed: ["quantity", "required"],
+    effectiveGasPrice: ["quantity", "required"],
+    contractAddress: ["addressOrNull", "required"],
+    logsBloom: ["data", "required"],
   },
   logs: {
     address: ["address", "required"],
@@ -347,9 +364,11 @@ export function checkFields(method: string, params: QueryParams, result: QueryRe
     }
     const schema = SCHEMAS[key]!;
     const selection = fields?.[key] ?? "all";
-    // With "all", each Required field must be present, and a Type- or Fork-dependent field can be present.
-    const required = selection === "all" ? Object.entries(schema).filter(([, s]) => s[1] === "required").map(([n]) => n) : selection;
-    const permitted = selection === "all" ? Object.keys(schema).filter((n) => !required.includes(n)) : [];
+    // Each selected Required field must be present. A selected Type- or Fork-dependent field can be absent, because
+    // it is absent on the transaction types and blocks that do not have it. See MIP-16 Appendix: Monad Response Schemas.
+    const selected = selection === "all" ? Object.keys(schema) : selection;
+    const required = selected.filter((n) => schema[n]?.[1] !== "type" && schema[n]?.[1] !== "fork");
+    const permitted = selected.filter((n) => !required.includes(n));
     rows.forEach((row, i) => {
       const at = `data.${key}[${i}]`;
       const received = Object.keys(row);
@@ -415,7 +434,7 @@ export function checkOrdering(params: QueryParams, result: QueryResult): string[
 export function checkRelations(method: string, result: QueryResult): string[] {
   const problems: string[] = [];
   const { primary, relations } = METHODS[method]!;
-  const primaries = result.data?.[primary] ?? [];
+  const primaries = result.data?.[primary];
   for (const rel of relations) {
     const rows = result.data?.[rel];
     if (!Array.isArray(rows)) continue;
@@ -428,7 +447,8 @@ export function checkRelations(method: string, result: QueryResult): string[] {
       if (seen.has(k)) problems.push(`data.${rel}[${i}] occurs more than one time`);
       seen.add(k);
     });
-    if (!primaries.every((p) => join.primary in p)) continue;
+    // checkFields reports a missing primary array.
+    if (!Array.isArray(primaries) || !primaries.every((p) => join.primary in p)) continue;
     const refs = new Set(primaries.map((p) => String(p[join.primary])));
     ids.forEach((id, i) => {
       if (!refs.has(String(id))) problems.push(`data.${rel}[${i}] is not referenced by a primary object`);
@@ -518,7 +538,8 @@ export function checkTargetCursor(
 
 /**
  * Checks rules between the values of one trace or transfer. A frame with a non-null error has reverted true.
- * A transfer has a value more than zero. See MIP-16 eth_queryTraces Response and eth_queryTransfers.
+ * A transfer has a value more than zero and is not a DELEGATECALL or CALLCODE frame. See MIP-16 eth_queryTraces Response
+ * and eth_queryTransfers.
  */
 export function checkFrames(result: QueryResult): string[] {
   const problems: string[] = [];
@@ -528,6 +549,7 @@ export function checkFrames(result: QueryResult): string[] {
     rows.forEach((row, i) => {
       if (typeof row.error === "string" && row.reverted === false) problems.push(`data.${type}[${i}] has error ${short(row.error)}, but reverted is false`);
       if (type === "transfers" && row.value === "0x0") problems.push(`data.${type}[${i}] has value 0x0, but a transfer has a value more than zero`);
+      if (type === "transfers" && (row.type === "DELEGATECALL" || row.type === "CALLCODE")) problems.push(`data.${type}[${i}] has type ${row.type}, but this frame type does not move value`);
     });
   }
   return problems;

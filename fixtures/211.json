@@ -1,0 +1,257 @@
+{
+  "description": "Get all transfers in desc order over blocks that have DELEGATECALL frames with a value more than zero. One frame is a DELEGATECALL from an address to the same address. The result has no DELEGATECALL frames. See MIP-16 eth_queryTransfers.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x2faf08d",
+        "toBlock": "0x2faf089",
+        "order": "desc",
+        "fields": {
+          "transfers": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress",
+            "type",
+            "from",
+            "to",
+            "value"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transfers": [
+          {
+            "blockNumber": "0x2faf08d",
+            "transactionIndex": "0x6",
+            "traceAddress": [
+              0,
+              0,
+              4,
+              0
+            ],
+            "type": "CALL",
+            "from": "0x3012e9049d05b4b5369d690114d5a5861ebb85cb",
+            "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+            "value": "0x16345785d8a0000"
+          },
+          {
+            "blockNumber": "0x2faf08d",
+            "transactionIndex": "0x6",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x186f5bace4ead7c97f039f4a3e538ed3d2392c80",
+            "to": "0x3012e9049d05b4b5369d690114d5a5861ebb85cb",
+            "value": "0x16345785d8a0000"
+          },
+          {
+            "blockNumber": "0x2faf08d",
+            "transactionIndex": "0x0",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000",
+            "value": "0x15af1d78b58c40000"
+          },
+          {
+            "blockNumber": "0x2faf08c",
+            "transactionIndex": "0x0",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000",
+            "value": "0x15af1d78b58c40000"
+          },
+          {
+            "blockNumber": "0x2faf08b",
+            "transactionIndex": "0x0",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000",
+            "value": "0x15af1d78b58c40000"
+          },
+          {
+            "blockNumber": "0x2faf08a",
+            "transactionIndex": "0x9",
+            "traceAddress": [
+              0
+            ],
+            "type": "CALL",
+            "from": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137",
+            "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf08a",
+            "transactionIndex": "0x9",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x8e007abe56a0072132bc5e15ada8d009a5b52028",
+            "to": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137",
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf08a",
+            "transactionIndex": "0x8",
+            "traceAddress": [
+              1
+            ],
+            "type": "CALL",
+            "from": "0x4f02a29df8510975d293aab0b32af7340f406fb4",
+            "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+            "value": "0x254beb02d1dcc0000"
+          },
+          {
+            "blockNumber": "0x2faf08a",
+            "transactionIndex": "0x8",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x4717ae09762e18aa9a1fe0f44dbb9e0e6f06eee2",
+            "to": "0x4f02a29df8510975d293aab0b32af7340f406fb4",
+            "value": "0x254beb02d1dcc0000"
+          },
+          {
+            "blockNumber": "0x2faf08a",
+            "transactionIndex": "0x0",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000",
+            "value": "0x15af1d78b58c40000"
+          },
+          {
+            "blockNumber": "0x2faf089",
+            "transactionIndex": "0xc",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0xf2ab41c8a3fab45a202acbb67623e07742931fa0",
+            "to": "0xe14a00e0ddba73e6b6a8b7c1866ec92f15c164ea",
+            "value": "0x16345785d8a0000"
+          },
+          {
+            "blockNumber": "0x2faf089",
+            "transactionIndex": "0xb",
+            "traceAddress": [
+              0
+            ],
+            "type": "CALL",
+            "from": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137",
+            "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf089",
+            "transactionIndex": "0xb",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0xd88f406b0b8636feaa91bf787c4cb713be9fba19",
+            "to": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137",
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf089",
+            "transactionIndex": "0xa",
+            "traceAddress": [
+              0
+            ],
+            "type": "CALL",
+            "from": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137",
+            "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf089",
+            "transactionIndex": "0xa",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x8859fd3dafc0694f9d4ccc5f91143657e6763aa6",
+            "to": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137",
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf089",
+            "transactionIndex": "0x9",
+            "traceAddress": [
+              0
+            ],
+            "type": "CALL",
+            "from": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137",
+            "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf089",
+            "transactionIndex": "0x9",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x2e8ca5e8ec29c8148c57ba13588d9ea8ae67536b",
+            "to": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137",
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf089",
+            "transactionIndex": "0x8",
+            "traceAddress": [
+              0
+            ],
+            "type": "CALL",
+            "from": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137",
+            "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf089",
+            "transactionIndex": "0x8",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x147c94bb36f1b3883f45841205143ff7775d9b1e",
+            "to": "0x0b79d71ae99528d1db24a4148b5f4f865cc2b137",
+            "value": "0xa"
+          },
+          {
+            "blockNumber": "0x2faf089",
+            "transactionIndex": "0x4",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0xf8a319bcd9fff599c191f30eb7b2c876067cb2ad",
+            "to": "0x2880ab155794e7179c9ee2e38200202908c17b43",
+            "value": "0x3e"
+          },
+          {
+            "blockNumber": "0x2faf089",
+            "transactionIndex": "0x0",
+            "traceAddress": [],
+            "type": "CALL",
+            "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "to": "0x0000000000000000000000000000000000001000",
+            "value": "0x15af1d78b58c40000"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08d",
+        "hash": "0xa6700333b16dec9a3d2113744f01d54945324054142afa949668a0b0d60a4f88",
+        "parentHash": "0x2a1c7a87311929cb2e730a0acd6c1f66374b0195c882fd8d823763e264a799db"
+      },
+      "toBlock": {
+        "number": "0x2faf089",
+        "hash": "0x04e9862654fd63f2afc6d02f34bad0461329957a3c28aa5b616bca3cb17d1982",
+        "parentHash": "0x4a38d4521e1de62f0b0b3964c2dc147ae82d022b49e9f2ce3abfca3288344cff"
+      },
+      "cursorBlock": {
+        "number": "0x2faf089",
+        "hash": "0x04e9862654fd63f2afc6d02f34bad0461329957a3c28aa5b616bca3cb17d1982",
+        "parentHash": "0x4a38d4521e1de62f0b0b3964c2dc147ae82d022b49e9f2ce3abfca3288344cff"
+      }
+    }
+  }
+}
