@@ -23,8 +23,7 @@ export type RpcResponse = {
   result?: QueryResult;
   error?: { code: number; message?: string; data?: unknown };
 };
-// An undecided fixture tests behavior that MIP-16 does not yet specify. The runner reports its problems as notes. See README.
-export type Fixture = { description: string; undecided?: boolean; request: RpcRequest; response: RpcResponse };
+export type Fixture = { description: string; request: RpcRequest; response: RpcResponse };
 
 // Value types. See MIP-16 Value types.
 
