@@ -1,0 +1,67 @@
+{
+  "description": "Select all block fields in a block before MONAD_FOUR. The block has no requestsHash. See MIP-16 Appendix 1: Monad revisions.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryBlocks",
+    "params": [
+      {
+        "fromBlock": "0x11516c5",
+        "toBlock": "0x11516c5",
+        "fields": {
+          "blocks": "all"
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "blocks": [
+          {
+            "hash": "0x541fa4dcd9b9655e12e393e6c79be6dc2d7d31313a1b3d2e9ed571e4f8ddb33c",
+            "parentHash": "0xaee1fd020d1030a188f1982ec28bb8fd1b2df396db07876864df354c5a4722bb",
+            "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+            "miner": "0x0000000000000000000000000000000000000000",
+            "stateRoot": "0xcc3569d6d49d2677111e430551e086978730f98ed435f7ff74835de165a55871",
+            "transactionsRoot": "0x42cad9cd843fa029004ddb894467c275abd43854c8070252aab23c0acfd4d67e",
+            "receiptsRoot": "0x85598c4f21083c17ab0260d89af9b0f77c98c5f663dde13af61275f7067ceb73",
+            "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "difficulty": "0x0",
+            "number": "0x11516c5",
+            "gasLimit": "0x8f0d180",
+            "gasUsed": "0x3c4d8",
+            "timestamp": "0x68ac532d",
+            "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "mixHash": "0xdf5c83e9995d8578fc410579d3dd181ac3530cd79fba206e41562d55fd1b4958",
+            "nonce": "0x0000000000000000",
+            "baseFeePerGas": "0xba43b7400",
+            "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+            "blobGasUsed": "0x0",
+            "excessBlobGas": "0x0",
+            "parentBeaconBlockRoot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "totalDifficulty": "0x0",
+            "size": "0x3df"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x11516c5",
+        "hash": "0x541fa4dcd9b9655e12e393e6c79be6dc2d7d31313a1b3d2e9ed571e4f8ddb33c",
+        "parentHash": "0xaee1fd020d1030a188f1982ec28bb8fd1b2df396db07876864df354c5a4722bb"
+      },
+      "toBlock": {
+        "number": "0x11516c5",
+        "hash": "0x541fa4dcd9b9655e12e393e6c79be6dc2d7d31313a1b3d2e9ed571e4f8ddb33c",
+        "parentHash": "0xaee1fd020d1030a188f1982ec28bb8fd1b2df396db07876864df354c5a4722bb"
+      },
+      "cursorBlock": {
+        "number": "0x11516c5",
+        "hash": "0x541fa4dcd9b9655e12e393e6c79be6dc2d7d31313a1b3d2e9ed571e4f8ddb33c",
+        "parentHash": "0xaee1fd020d1030a188f1982ec28bb8fd1b2df396db07876864df354c5a4722bb"
+      }
+    }
+  }
+}

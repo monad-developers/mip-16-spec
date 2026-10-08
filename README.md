@@ -15,7 +15,7 @@ All fixture data comes from Monad mainnet (chain ID `143`, `0x8f`).
 MIP-16 lets each server make some decisions. Two correct servers can give different responses to the same request. The runner does not report these differences as failures, except for the availability window.
 
 - **Block tags.** Each server resolves `latest`, `safe`, `finalized`, and `earliest` at query time, so the result is different between servers and between requests. A fixture that uses a tag, or that omits `fromBlock` or `toBlock`, has no expected result. The request must succeed and pass the checks, but the runner does not compare the result. Two equal tags in one request must resolve to the same block, and `earliest` must resolve to block `0x0`. Fixture `200` needs the node to serve block `0x0`.
-- **Availability window.** Each node can serve a different range of blocks for each method. For example, a node can keep all blocks but only recent traces. If the server returns `-32001` (resource not found) or `-32004` (method not supported), the fixture fails. To pass all fixtures, the node must serve all the blocks in [Required Block Range](#required-block-range) for all five methods.
+- **Availability window.** Each node can serve a different range of blocks for each method. For example, a node can keep all blocks but only recent traces. If the server returns `-32001` (resource not found) or `-32004` (method not supported), the fixture fails. To pass all fixtures, the node must serve each block in [Required Blocks](#required-blocks) for the methods that the section specifies.
 - **Error messages.** MIP-16 specifies only the error `code`. The runner compares only `error.code`. It does not compare `error.message` or `error.data`.
 - **Budget.** Each server sets its own budget, such as a maximum execution time or response size. When the server reaches its budget, it ends the page at an earlier block. Thus the number of pages for a query is different between servers. The runner requests all pages until the query is complete, and compares the merged result. See [Pages and Budget](#pages-and-budget). The runner cannot cause a server to reach its budget, so this suite does not test the `-32005` (limit exceeded) error.
 
@@ -115,16 +115,25 @@ Fixtures `020`–`029` and `035`–`039` paginate because of `target`. Any fixtu
 
 The runner uses the object types in [Appendix: Monad Response Schemas](https://github.com/monad-crypto/MIPs/pull/89). A fixture that selects `"all"`, or that omits `fields`, expects all the fields that the appendix defines for that object. A fixture that selects a field that the appendix does not define expects `-32602`.
 
-## Required Block Range
+## Required Blocks
 
-The fixtures use Monad mainnet blocks 50,000,005 to 50,000,018 (`0x2faf085` to `0x2faf092`). The node must serve this range for all five methods.
+Most fixtures use Monad mainnet blocks 50,000,005 to 50,000,018 (`0x2faf085` to `0x2faf092`). The node must serve this range for all five methods.
+
+This range does not contain some cases, so some fixtures use other blocks. The node must serve each of these blocks for the methods in the table:
+
+| Block | Methods | Fixtures | Case |
+| --- | --- | --- | --- |
+| 18,159,301 (`0x11516c5`) | `eth_queryBlocks`, `eth_queryTransactions` | `236`, `237` | A block before `MONAD_FOUR`, and an unprotected type `0x0` transaction |
+| 111,674,772 (`0x6a80594`) | `eth_queryTraces` | `241` | A `CREATE` frame with `reverted` true because a parent frame failed |
+| 111,675,811 (`0x6a809a3`) | `eth_queryTraces` | `239` | A `CREATE` frame |
+| 111,676,723 (`0x6a80d33`) | `eth_queryTransactions` | `238` | A type `0x4` transaction |
+| 111,677,385 (`0x6a80fc9`) | `eth_queryTraces` | `240` | A `CREATE2` frame |
+
+Block `0x11516c5` is old, and many nodes do not keep traces for old blocks. Thus no fixture queries traces or transfers in this block.
 
 ## Untested Behavior
 
-The blocks in [Required Block Range](#required-block-range) do not contain these cases, so no fixture tests them:
+The [Required Blocks](#required-blocks) do not contain these cases, so no fixture tests them:
 
-- **Type `0x4` transactions.** No fixture tests `authorizationList`, or `gasPrice` on a type `0x4` transaction.
-- **Unprotected type `0x0` transactions.** No fixture tests a type `0x0` transaction without `chainId`, or a `v` of `0x1b` or `0x1c`.
-- **Blocks before `MONAD_FOUR`.** All fixture blocks are after block `0x1fe56b2`. No fixture tests a block without `requestsHash`.
-- **`CREATE` and `CREATE2` frames.** No fixture tests the `to` or `output` of a `CREATE` or `CREATE2` frame, or a failed frame with `to` set to `null`.
+- **Failed `CREATE` and `CREATE2` frames.** No fixture tests a frame that failed, with `to` set to `null`.
 - **`SELFDESTRUCT` frames.** No fixture tests the `to`, `value`, `gas`, or `input` of a `SELFDESTRUCT` frame, or a `SELFDESTRUCT` transfer.
