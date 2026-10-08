@@ -1,6 +1,5 @@
 {
   "description": "Select only the blocks relation, and omit the logs key. If fields is present, it must contain the key of the primary objects, so the request fails with -32602. See MIP-16 Fields and relations.",
-  "undecided": true,
   "request": {
     "jsonrpc": "2.0",
     "id": 1,

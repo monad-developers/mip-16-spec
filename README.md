@@ -54,7 +54,6 @@ For each fetch request, the runner prints the duration, the `fromBlock` and `toB
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` | What the fixture tests. Refer to the MIP-16 section. |
-| `undecided` | `boolean` | Optional. If `true`, MIP-16 does not yet specify the behavior that the fixture tests. See [Undecided Fixtures](#undecided-fixtures). |
 | `request` | `object` | The full JSON-RPC request. The runner sends it without change. |
 | `response` | `object` | The expected JSON-RPC response. It contains `result` or `error`. If it contains neither, the request must succeed, but the runner does not compare the result. |
 
@@ -122,9 +121,6 @@ MIP-16 does not yet specify the behavior that these fixtures test. Each fixture 
 
 | Fixtures | Expected behavior | Status in MIP-16 |
 | --- | --- | --- |
-| `160`–`164` | An unknown field in the request object fails with `-32602`. | Not specified. The `-32602` list includes only unknown `fields` keys and unknown field names. |
-| `214` | If `fields` is present, it must contain the key of the primary objects. | Not specified. |
-| `216`–`221` | An empty `fields` array fails with `-32602`. | Not specified. |
 | `230`–`233` | A `null` filter value fails with `-32602`. | Not specified. |
 
 ## Required Block Range

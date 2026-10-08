@@ -1,6 +1,5 @@
 {
   "description": "Add an unknown field to the request object. The request fails with -32602. See MIP-16 Request.",
-  "undecided": true,
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
