@@ -124,16 +124,12 @@ This range does not contain some cases, so some fixtures use other blocks. The n
 | Block | Methods | Fixtures | Case |
 | --- | --- | --- | --- |
 | 18,159,301 (`0x11516c5`) | `eth_queryBlocks`, `eth_queryTransactions` | `236`, `237` | A block before `MONAD_FOUR`, and an unprotected type `0x0` transaction |
+| 102,417,573 (`0x61ac4a5`) | `eth_queryTraces`, `eth_queryTransfers` | `242`, `243` | A failed `CREATE` frame with a value |
+| 106,364,155 (`0x656fcfb`) | `eth_queryTraces`, `eth_queryTransfers` | `244`, `245` | A `SELFDESTRUCT` frame with a value |
+| 111,216,736 (`0x6a10860`) | `eth_queryTraces` | `246` | A failed `CREATE2` frame |
 | 111,674,772 (`0x6a80594`) | `eth_queryTraces` | `241` | A `CREATE` frame with `reverted` true because a parent frame failed |
 | 111,675,811 (`0x6a809a3`) | `eth_queryTraces` | `239` | A `CREATE` frame |
 | 111,676,723 (`0x6a80d33`) | `eth_queryTransactions` | `238` | A type `0x4` transaction |
 | 111,677,385 (`0x6a80fc9`) | `eth_queryTraces` | `240` | A `CREATE2` frame |
 
 Block `0x11516c5` is old, and many nodes do not keep traces for old blocks. Thus no fixture queries traces or transfers in this block.
-
-## Untested Behavior
-
-The [Required Blocks](#required-blocks) do not contain these cases, so no fixture tests them:
-
-- **Failed `CREATE` and `CREATE2` frames.** No fixture tests a frame that failed, with `to` set to `null`.
-- **`SELFDESTRUCT` frames.** No fixture tests the `to`, `value`, `gas`, or `input` of a `SELFDESTRUCT` frame, or a `SELFDESTRUCT` transfer.
