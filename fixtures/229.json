@@ -1,6 +1,5 @@
 {
   "description": "Filter logs by topics [[]]. As in eth_getLogs, an empty array at a position is a wildcard, the same as null. The result is the same as in 002.json. See MIP-16 eth_queryLogs Filter.",
-  "undecided": true,
   "request": {
     "jsonrpc": "2.0",
     "id": 1,

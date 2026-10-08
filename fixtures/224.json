@@ -1,6 +1,5 @@
 {
-  "description": "Filter logs by an empty address array. A filter array must not be empty, so the request fails with -32602. See MIP-16 Filters.",
-  "undecided": true,
+  "description": "Filter logs by an empty address array. As in eth_getLogs, an empty filter array places no constraint, so the result has the same logs as 007.json. See MIP-16 Filters.",
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
@@ -23,9 +22,50 @@
   "response": {
     "jsonrpc": "2.0",
     "id": 1,
-    "error": {
-      "code": -32602,
-      "message": "Invalid params"
+    "result": {
+      "data": {
+        "logs": [
+          {
+            "logIndex": "0x0"
+          },
+          {
+            "logIndex": "0x1"
+          },
+          {
+            "logIndex": "0x2"
+          },
+          {
+            "logIndex": "0x3"
+          },
+          {
+            "logIndex": "0x4"
+          },
+          {
+            "logIndex": "0x5"
+          },
+          {
+            "logIndex": "0x6"
+          },
+          {
+            "logIndex": "0x7"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
     }
   }
 }

@@ -1,6 +1,5 @@
 {
   "description": "Filter logs by topics [null, null]. As in eth_getLogs, each entry is a condition: a log matches only if it has at least two topics. Thus the result has only the log with three topics, and not the seven logs with one topic. See MIP-16 eth_queryLogs Filter.",
-  "undecided": true,
   "request": {
     "jsonrpc": "2.0",
     "id": 1,

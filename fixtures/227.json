@@ -1,6 +1,5 @@
 {
   "description": "Filter logs by an empty topics array. As in eth_getLogs, an empty topics array places no constraint on the topics, so the result is the same as in 002.json. See MIP-16 eth_queryLogs Filter.",
-  "undecided": true,
   "request": {
     "jsonrpc": "2.0",
     "id": 1,

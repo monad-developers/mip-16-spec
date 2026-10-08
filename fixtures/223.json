@@ -1,6 +1,5 @@
 {
-  "description": "Filter transactions by an empty from array. A filter array must not be empty, so the request fails with -32602. See MIP-16 Filters.",
-  "undecided": true,
+  "description": "Filter transactions by an empty from array. As in eth_getLogs, an empty filter array places no constraint, so the result has the same transactions as 001.json. See MIP-16 Filters.",
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
@@ -23,9 +22,41 @@
   "response": {
     "jsonrpc": "2.0",
     "id": 1,
-    "error": {
-      "code": -32602,
-      "message": "Invalid params"
+    "result": {
+      "data": {
+        "transactions": [
+          {
+            "hash": "0xa6387e766f278e7e32e4041104f37b776db24404b2000f7801a4dffe4a01c340"
+          },
+          {
+            "hash": "0xdcccd7b8a35c8119776ce2cbd96b8608a77d67c7977887fc3d43a39cabc0fb0d"
+          },
+          {
+            "hash": "0x01ac25909db3ef01202582ee581b4ac0e45085634904b2c50fdd25ccc10cee30"
+          },
+          {
+            "hash": "0x03270dd6a8127158b683a6dd1b02d567106d2a1410c92f39b0e8ca59e1a826da"
+          },
+          {
+            "hash": "0xba5c1f763532c183b01a7837d038865bcc98e252790f739759704b150c18618b"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "toBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      },
+      "cursorBlock": {
+        "number": "0x2faf091",
+        "hash": "0x1c3c9bd246e6aa52856dbe7464fb9792397ff76a69dc4591b36df43c1742dc32",
+        "parentHash": "0xe0946dd234e6c1a6ab17af0d58af305bb92a4d695d292a97c71028bd1ef5d6d8"
+      }
     }
   }
 }

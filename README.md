@@ -125,8 +125,6 @@ MIP-16 does not yet specify the behavior that these fixtures test. Each fixture 
 | `160`–`164` | An unknown field in the request object fails with `-32602`. | Not specified. The `-32602` list includes only unknown `fields` keys and unknown field names. |
 | `214` | If `fields` is present, it must contain the key of the primary objects. | Not specified. |
 | `216`–`221` | An empty `fields` array fails with `-32602`. | Not specified. |
-| `222`–`226` | An empty filter array fails with `-32602`. | Not specified. |
-| `227`–`229` | `topics` filters `[]`, `[null, null]`, and `[[]]` have the same result as in `eth_getLogs`. | Not clear. MIP-16 refers to `eth_getLogs`, but it also says that trailing `null` entries can be omitted. With that rule, `[null, null]` is the same as `[]`. |
 | `230`–`233` | A `null` filter value fails with `-32602`. | Not specified. |
 
 ## Required Block Range
