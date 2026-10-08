@@ -670,7 +670,7 @@ export async function collectPages(
     const nextParams: QueryParams = { ...params, fromBlock: nextFromBlock(params.order, page.cursorBlock), toBlock };
     const res = await query(url, method, nextParams, onRequest);
     if (!res.result) {
-      problems.push(`${at} failed with ${describeError(res.error, nextParams)}`);
+      problems.push(`${at} failed with ${describeError(res.error, method, nextParams)}`);
       break;
     }
     const next = res.result;
@@ -724,9 +724,22 @@ export function diff(expected: unknown, actual: unknown, path = "result", out: s
 }
 
 /** Describes a JSON-RPC error and the params of the request that caused it. */
-function describeError(error: RpcResponse["error"], params: unknown): string {
+function describeError(error: RpcResponse["error"], method: string, params: unknown): string {
   const data = error?.data === undefined ? "" : ` (data: ${short(error.data, 200)})`;
-  return `error ${error?.code}: ${error?.message}${data}\n  params: ${short(params, 400)}`;
+  return `error ${error?.code}: ${error?.message}${data}${availabilityHint(error?.code, method, params)}\n  params: ${short(params, 400)}`;
+}
+
+/**
+ * Explains -32001 and -32004, so that an operator can tell a node that does not serve the blocks of a fixture from a
+ * conformance defect. The fixture still fails. See README "Required Blocks".
+ */
+function availabilityHint(code: number | undefined, method: string, params: unknown): string {
+  const p = (params ?? {}) as QueryParams;
+  if (code === -32001) {
+    return `\n  The node does not serve ${method} for blocks ${p.fromBlock ?? "-"} to ${p.toBlock ?? "-"}. To pass, the node must serve these blocks for ${method}. See README "Required Blocks".`;
+  }
+  if (code === -32004) return `\n  The node does not serve ${method}. To pass, the node must serve all five methods. See README "Required Blocks".`;
+  return "";
 }
 
 /**
@@ -831,12 +844,12 @@ async function runChecked(url: string, fixture: Fixture, report: OnRequest, onNo
   if (expected.error) {
     if (!actual.error) return { status: "failed", problems: [`expected error ${expected.error.code}, but got a result`] };
     if (actual.error.code !== expected.error.code) {
-      return { status: "failed", problems: [`error.code is ${actual.error.code}, expected ${expected.error.code}. ${describeError(actual.error, (request.params as unknown[])?.[0])}`] };
+      return { status: "failed", problems: [`error.code is ${actual.error.code}, expected ${expected.error.code}. ${describeError(actual.error, request.method, (request.params as unknown[])?.[0])}`] };
     }
     return { status: "passed", problems: [] };
   }
 
-  if (actual.error) return { status: "failed", problems: [describeError(actual.error, (request.params as unknown[])[0])] };
+  if (actual.error) return { status: "failed", problems: [describeError(actual.error, request.method, (request.params as unknown[])[0])] };
 
   const method = request.method;
   const params = (request.params as QueryParams[])[0]!;
