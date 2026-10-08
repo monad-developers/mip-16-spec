@@ -115,12 +115,6 @@ Fixtures `020`–`029` and `035`–`039` paginate because of `target`. Any fixtu
 
 The runner uses the object types in [Appendix: Monad Response Schemas](https://github.com/monad-crypto/MIPs/pull/89). A fixture that selects `"all"`, or that omits `fields`, expects all the fields that the appendix defines for that object. A fixture that selects a field that the appendix does not define expects `-32602`.
 
-## Undecided Fixtures
-
-If MIP-16 does not yet specify the behavior that a fixture tests, the fixture has `"undecided": true`. The runner sends the request and does all the checks, but it prints each problem as a note and does not fail the fixture. When MIP-16 specifies the behavior, update the fixture to agree with MIP-16 and remove `undecided`.
-
-No fixture is undecided now.
-
 ## Required Block Range
 
 The fixtures use Monad mainnet blocks 50,000,005 to 50,000,018 (`0x2faf085` to `0x2faf092`). The node must serve this range for all five methods.
