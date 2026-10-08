@@ -117,11 +117,9 @@ The runner uses the object types in [Appendix: Monad Response Schemas](https://g
 
 ## Undecided Fixtures
 
-MIP-16 does not yet specify the behavior that these fixtures test. Each fixture has `"undecided": true`. The runner sends the request and does all the checks, but it prints each problem as a note and does not fail the fixture. When MIP-16 specifies the behavior, update the fixture to agree with MIP-16 and remove `undecided`.
+If MIP-16 does not yet specify the behavior that a fixture tests, the fixture has `"undecided": true`. The runner sends the request and does all the checks, but it prints each problem as a note and does not fail the fixture. When MIP-16 specifies the behavior, update the fixture to agree with MIP-16 and remove `undecided`.
 
-| Fixtures | Expected behavior | Status in MIP-16 |
-| --- | --- | --- |
-| `230`–`233` | A `null` filter value fails with `-32602`. | Not specified. |
+No fixture is undecided now.
 
 ## Required Block Range
 

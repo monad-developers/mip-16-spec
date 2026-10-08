@@ -1,6 +1,5 @@
 {
-  "description": "Filter transactions by a to array that contains null. null is not a valid filter value, so the request fails with -32602. See MIP-16 Filters.",
-  "undecided": true,
+  "description": "Filter transactions by a to array that contains null. null is not a valid address in a filter array, as in eth_getLogs, so the request fails with -32602. See MIP-16 Filters.",
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
