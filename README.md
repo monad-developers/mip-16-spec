@@ -97,7 +97,7 @@ The runner does these checks in order, and stops at the first stage that fails. 
 | Transport | The response arrives before `REQUEST_TIMEOUT_MS` and is JSON. |
 | Envelope | `jsonrpc` is `"2.0"`, `id` matches, and the response has `result` or `error`, but not both. |
 | Error | An expected error has the same `error.code`. An unexpected error fails. |
-| Page | On each page: valid block references, each selected field and no other field, encodings with lowercase hex, sort order without duplicates, relations without duplicates or missing references, objects only in the page's blocks, `reverted` true for each frame with an `error`, a `value` more than zero and no `DELEGATECALL` or `CALLCODE` type for each transfer, and no page that ends after the block where `target` ends it. |
+| Page | On each page: valid block references, each selected field and no other field, encodings with lowercase hex, sort order without duplicates, relations without duplicates or missing references, objects only in the page's blocks, `reverted` true for each frame with an `error`, `to` set to `null` only for a failed `CREATE` or `CREATE2` frame and always for one, a `value` more than zero and no `DELEGATECALL` or `CALLCODE` type for each transfer, and no page that ends after the block where `target` ends it. |
 | Pagination | Each next page succeeds, starts at the requested `fromBlock`, has the same `toBlock`, and links to the previous page by hash. If `toBlock` is a tag, each next request uses the block number that the first page resolved. |
 | Comparison | The merged result is equal to the expected `result`. Key order is not significant. For the `error` of a trace or transfer, only `null` or not `null` is compared, not the text. |
 

@@ -114,7 +114,7 @@ function isValue(type: ValueType, v: unknown): boolean {
 const traceShape = {
   type: ["string", "required"],
   from: ["address", "required"],
-  // to is null if a CREATE or CREATE2 frame failed.
+  // to is null if a CREATE or CREATE2 frame failed. checkFrames checks this rule.
   to: ["addressOrNull", "required"],
   value: ["quantity", "required"],
   gas: ["quantity", "required"],
@@ -537,8 +537,8 @@ export function checkTargetCursor(
 
 /**
  * Checks rules between the values of one trace or transfer. A frame with a non-null error has reverted true.
- * A transfer has a value more than zero and is not a DELEGATECALL or CALLCODE frame. See MIP-16 eth_queryTraces Response
- * and eth_queryTransfers.
+ * to is null only for a failed CREATE or CREATE2 frame, and always for one. A transfer has a value more than zero and
+ * is not a DELEGATECALL or CALLCODE frame. See MIP-16 eth_queryTraces Response and eth_queryTransfers.
  */
 export function checkFrames(result: QueryResult): string[] {
   const problems: string[] = [];
@@ -547,6 +547,10 @@ export function checkFrames(result: QueryResult): string[] {
     if (!Array.isArray(rows)) continue;
     rows.forEach((row, i) => {
       if (typeof row.error === "string" && row.reverted === false) problems.push(`data.${type}[${i}] has error ${short(row.error)}, but reverted is false`);
+      const isCreate = row.type === "CREATE" || row.type === "CREATE2";
+      if (row.to === null && "type" in row && !isCreate) problems.push(`data.${type}[${i}] has to null, but type ${row.type} is not CREATE or CREATE2`);
+      if (row.to === null && row.error === null) problems.push(`data.${type}[${i}] has to null, but error is null`);
+      if (isCreate && typeof row.error === "string" && "to" in row && row.to !== null) problems.push(`data.${type}[${i}] is a failed ${row.type} frame, but to is not null`);
       if (type === "transfers" && row.value === "0x0") problems.push(`data.${type}[${i}] has value 0x0, but a transfer has a value more than zero`);
       if (type === "transfers" && (row.type === "DELEGATECALL" || row.type === "CALLCODE")) problems.push(`data.${type}[${i}] has type ${row.type}, but this frame type does not move value`);
     });
