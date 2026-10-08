@@ -54,7 +54,6 @@ For each fetch request, the runner prints the duration, the `fromBlock` and `toB
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` | What the fixture tests. Refer to the MIP-16 section. |
-| `undecided` | `boolean` | Optional. If `true`, MIP-16 does not yet specify the behavior that the fixture tests. See [Undecided Fixtures](#undecided-fixtures). |
 | `request` | `object` | The full JSON-RPC request. The runner sends it without change. |
 | `response` | `object` | The expected JSON-RPC response. It contains `result` or `error`. If it contains neither, the request must succeed, but the runner does not compare the result. |
 
@@ -115,19 +114,6 @@ Fixtures `020`–`029` and `035`–`039` paginate because of `target`. Any fixtu
 ## Response Schemas
 
 The runner uses the object types in [Appendix: Monad Response Schemas](https://github.com/monad-crypto/MIPs/pull/89). A fixture that selects `"all"`, or that omits `fields`, expects all the fields that the appendix defines for that object. A fixture that selects a field that the appendix does not define expects `-32602`.
-
-## Undecided Fixtures
-
-MIP-16 does not yet specify the behavior that these fixtures test. Each fixture has `"undecided": true`. The runner sends the request and does all the checks, but it prints each problem as a note and does not fail the fixture. When MIP-16 specifies the behavior, update the fixture to agree with MIP-16 and remove `undecided`.
-
-| Fixtures | Expected behavior | Status in MIP-16 |
-| --- | --- | --- |
-| `160`–`164` | An unknown field in the request object fails with `-32602`. | Not specified. The `-32602` list includes only unknown `fields` keys and unknown field names. |
-| `214` | If `fields` is present, it must contain the key of the primary objects. | Not specified. |
-| `216`–`221` | An empty `fields` array fails with `-32602`. | Not specified. |
-| `222`–`226` | An empty filter array fails with `-32602`. | Not specified. |
-| `227`–`229` | `topics` filters `[]`, `[null, null]`, and `[[]]` have the same result as in `eth_getLogs`. | Not clear. MIP-16 refers to `eth_getLogs`, but it also says that trailing `null` entries can be omitted. With that rule, `[null, null]` is the same as `[]`. |
-| `230`–`233` | A `null` filter value fails with `-32602`. | Not specified. |
 
 ## Required Block Range
 

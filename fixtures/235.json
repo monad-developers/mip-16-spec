@@ -1,5 +1,5 @@
 {
-  "description": "Filter logs by an empty topics array. As in eth_getLogs, an empty topics array places no constraint on the topics, so the result is the same as in 002.json. See MIP-16 eth_queryLogs Filter.",
+  "description": "Filter logs by topics null. As in eth_getLogs, a null filter value places no constraint, so the result is the same as in 002.json. See MIP-16 eth_queryLogs Filter.",
   "request": {
     "jsonrpc": "2.0",
     "id": 1,
@@ -8,6 +8,9 @@
       {
         "fromBlock": "0x2faf08b",
         "toBlock": "0x2faf08b",
+        "filter": {
+          "topics": null
+        },
         "fields": {
           "logs": [
             "blockNumber",
@@ -17,9 +20,6 @@
             "topics",
             "data"
           ]
-        },
-        "filter": {
-          "topics": []
         }
       }
     ]
