@@ -1,0 +1,66 @@
+{
+  "description": "Select all transaction fields in a block before MONAD_FOUR. The only transaction is an unprotected type 0x0 contract creation: chainId and yParity are absent, v is 0x1b, to is null, and contractAddress is set. See MIP-16 Appendix 1: Transactions.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x11516c5",
+        "toBlock": "0x11516c5",
+        "fields": {
+          "transactions": "all"
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transactions": [
+          {
+            "hash": "0x803351deb6d745e91545a6a3e1c0ea3e9a6a02a1a4193b70edfcd2f40f71a01c",
+            "blockHash": "0x541fa4dcd9b9655e12e393e6c79be6dc2d7d31313a1b3d2e9ed571e4f8ddb33c",
+            "blockNumber": "0x11516c5",
+            "blockTimestamp": "0x68ac532d",
+            "transactionIndex": "0x0",
+            "type": "0x0",
+            "from": "0xbb6e024b9cffacb947a71991e386681b1cd1477d",
+            "to": null,
+            "nonce": "0x0",
+            "input": "0x608060405234801561001057600080fd5b50610134806100206000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80634af63f0214602d575b600080fd5b60cf60048036036040811015604157600080fd5b810190602081018135640100000000811115605b57600080fd5b820183602082011115606c57600080fd5b80359060200191846001830284011164010000000083111715608d57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929550509135925060eb915050565b604080516001600160a01b039092168252519081900360200190f35b6000818351602085016000f5939250505056fea26469706673582212206b44f8a82cb6b156bfcc3dc6aadd6df4eefd204bc928a4397fd15dacf6d5320564736f6c63430006020033",
+            "value": "0x0",
+            "gas": "0x3c4d8",
+            "gasPrice": "0x174876e800",
+            "v": "0x1b",
+            "r": "0x247000",
+            "s": "0x2470",
+            "status": "0x1",
+            "gasUsed": "0x3c4d8",
+            "cumulativeGasUsed": "0x3c4d8",
+            "effectiveGasPrice": "0x174876e800",
+            "contractAddress": "0xce0042b868300000d44a59004da54a005ffdcf9f",
+            "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x11516c5",
+        "hash": "0x541fa4dcd9b9655e12e393e6c79be6dc2d7d31313a1b3d2e9ed571e4f8ddb33c",
+        "parentHash": "0xaee1fd020d1030a188f1982ec28bb8fd1b2df396db07876864df354c5a4722bb"
+      },
+      "toBlock": {
+        "number": "0x11516c5",
+        "hash": "0x541fa4dcd9b9655e12e393e6c79be6dc2d7d31313a1b3d2e9ed571e4f8ddb33c",
+        "parentHash": "0xaee1fd020d1030a188f1982ec28bb8fd1b2df396db07876864df354c5a4722bb"
+      },
+      "cursorBlock": {
+        "number": "0x11516c5",
+        "hash": "0x541fa4dcd9b9655e12e393e6c79be6dc2d7d31313a1b3d2e9ed571e4f8ddb33c",
+        "parentHash": "0xaee1fd020d1030a188f1982ec28bb8fd1b2df396db07876864df354c5a4722bb"
+      }
+    }
+  }
+}

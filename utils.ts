@@ -114,7 +114,7 @@ function isValue(type: ValueType, v: unknown): boolean {
 const traceShape = {
   type: ["string", "required"],
   from: ["address", "required"],
-  // to is null if a CREATE or CREATE2 frame failed.
+  // to is null if a CREATE or CREATE2 frame failed. checkFrames checks this rule.
   to: ["addressOrNull", "required"],
   value: ["quantity", "required"],
   gas: ["quantity", "required"],
@@ -537,8 +537,8 @@ export function checkTargetCursor(
 
 /**
  * Checks rules between the values of one trace or transfer. A frame with a non-null error has reverted true.
- * A transfer has a value more than zero and is not a DELEGATECALL or CALLCODE frame. See MIP-16 eth_queryTraces Response
- * and eth_queryTransfers.
+ * to is null only for a failed CREATE or CREATE2 frame, and always for one. A transfer has a value more than zero and
+ * is not a DELEGATECALL or CALLCODE frame. See MIP-16 eth_queryTraces Response and eth_queryTransfers.
  */
 export function checkFrames(result: QueryResult): string[] {
   const problems: string[] = [];
@@ -547,6 +547,10 @@ export function checkFrames(result: QueryResult): string[] {
     if (!Array.isArray(rows)) continue;
     rows.forEach((row, i) => {
       if (typeof row.error === "string" && row.reverted === false) problems.push(`data.${type}[${i}] has error ${short(row.error)}, but reverted is false`);
+      const isCreate = row.type === "CREATE" || row.type === "CREATE2";
+      if (row.to === null && "type" in row && !isCreate) problems.push(`data.${type}[${i}] has to null, but type ${row.type} is not CREATE or CREATE2`);
+      if (row.to === null && row.error === null) problems.push(`data.${type}[${i}] has to null, but error is null`);
+      if (isCreate && typeof row.error === "string" && "to" in row && row.to !== null) problems.push(`data.${type}[${i}] is a failed ${row.type} frame, but to is not null`);
       if (type === "transfers" && row.value === "0x0") problems.push(`data.${type}[${i}] has value 0x0, but a transfer has a value more than zero`);
       if (type === "transfers" && (row.type === "DELEGATECALL" || row.type === "CALLCODE")) problems.push(`data.${type}[${i}] has type ${row.type}, but this frame type does not move value`);
     });
@@ -666,7 +670,7 @@ export async function collectPages(
     const nextParams: QueryParams = { ...params, fromBlock: nextFromBlock(params.order, page.cursorBlock), toBlock };
     const res = await query(url, method, nextParams, onRequest);
     if (!res.result) {
-      problems.push(`${at} failed with ${describeError(res.error, nextParams)}`);
+      problems.push(`${at} failed with ${describeError(res.error, method, nextParams)}`);
       break;
     }
     const next = res.result;
@@ -720,9 +724,22 @@ export function diff(expected: unknown, actual: unknown, path = "result", out: s
 }
 
 /** Describes a JSON-RPC error and the params of the request that caused it. */
-function describeError(error: RpcResponse["error"], params: unknown): string {
+function describeError(error: RpcResponse["error"], method: string, params: unknown): string {
   const data = error?.data === undefined ? "" : ` (data: ${short(error.data, 200)})`;
-  return `error ${error?.code}: ${error?.message}${data}\n  params: ${short(params, 400)}`;
+  return `error ${error?.code}: ${error?.message}${data}${availabilityHint(error?.code, method, params)}\n  params: ${short(params, 400)}`;
+}
+
+/**
+ * Explains -32001 and -32004, so that an operator can tell a node that does not serve the blocks of a fixture from a
+ * conformance defect. The fixture still fails. See README "Required Blocks".
+ */
+function availabilityHint(code: number | undefined, method: string, params: unknown): string {
+  const p = (params ?? {}) as QueryParams;
+  if (code === -32001) {
+    return `\n  The node does not serve ${method} for blocks ${p.fromBlock ?? "-"} to ${p.toBlock ?? "-"}. To pass, the node must serve these blocks for ${method}. See README "Required Blocks".`;
+  }
+  if (code === -32004) return `\n  The node does not serve ${method}. To pass, the node must serve all five methods. See README "Required Blocks".`;
+  return "";
 }
 
 /**
@@ -827,12 +844,12 @@ async function runChecked(url: string, fixture: Fixture, report: OnRequest, onNo
   if (expected.error) {
     if (!actual.error) return { status: "failed", problems: [`expected error ${expected.error.code}, but got a result`] };
     if (actual.error.code !== expected.error.code) {
-      return { status: "failed", problems: [`error.code is ${actual.error.code}, expected ${expected.error.code}. ${describeError(actual.error, (request.params as unknown[])?.[0])}`] };
+      return { status: "failed", problems: [`error.code is ${actual.error.code}, expected ${expected.error.code}. ${describeError(actual.error, request.method, (request.params as unknown[])?.[0])}`] };
     }
     return { status: "passed", problems: [] };
   }
 
-  if (actual.error) return { status: "failed", problems: [describeError(actual.error, (request.params as unknown[])[0])] };
+  if (actual.error) return { status: "failed", problems: [describeError(actual.error, request.method, (request.params as unknown[])[0])] };
 
   const method = request.method;
   const params = (request.params as QueryParams[])[0]!;

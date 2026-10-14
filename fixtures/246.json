@@ -1,0 +1,65 @@
+{
+  "description": "Filter by from, set includeReverted to true, and select all trace fields. The only frame is a CREATE2 frame that failed: to is null, output is 0x, and reverted is true. See MIP-16 eth_queryTraces Response.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x6a10860",
+        "toBlock": "0x6a10860",
+        "filter": {
+          "from": "0x00b19a5200a100e5fc4c9800772f4d002f218400",
+          "includeReverted": true
+        },
+        "fields": {
+          "traces": "all"
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "traces": [
+          {
+            "type": "CREATE2",
+            "from": "0x00b19a5200a100e5fc4c9800772f4d002f218400",
+            "to": null,
+            "value": "0x0",
+            "gas": "0x3a6a6",
+            "gasUsed": "0x3a6a6",
+            "input": "0x3d602d80600a3d3981f3363d3d373d3d3d363d739f36ee33fd56c7d9a78facd3249c580b1ca464a25af43d82803e903d91602b57fd5bf3",
+            "output": "0x",
+            "error": "error",
+            "reverted": true,
+            "blockHash": "0x50420e1cded75947a817173553254966daf1c06d088754cbf3d00e70ea782acc",
+            "blockNumber": "0x6a10860",
+            "transactionHash": "0x89f12d7ea5ff8c45011a960aa52d478cd59ac0c8d4827a8b1cc167ec6774ac58",
+            "transactionIndex": "0xe",
+            "traceAddress": [
+              0
+            ]
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x6a10860",
+        "hash": "0x50420e1cded75947a817173553254966daf1c06d088754cbf3d00e70ea782acc",
+        "parentHash": "0x798ee124e7ce774477c3705737139d7e01f7b55866f4960a4530151e39875fe6"
+      },
+      "toBlock": {
+        "number": "0x6a10860",
+        "hash": "0x50420e1cded75947a817173553254966daf1c06d088754cbf3d00e70ea782acc",
+        "parentHash": "0x798ee124e7ce774477c3705737139d7e01f7b55866f4960a4530151e39875fe6"
+      },
+      "cursorBlock": {
+        "number": "0x6a10860",
+        "hash": "0x50420e1cded75947a817173553254966daf1c06d088754cbf3d00e70ea782acc",
+        "parentHash": "0x798ee124e7ce774477c3705737139d7e01f7b55866f4960a4530151e39875fe6"
+      }
+    }
+  }
+}

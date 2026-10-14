@@ -1,0 +1,102 @@
+{
+  "description": "Filter by to with the address that a CREATE frame created, and select all trace fields. The CREATE frame matches, its to is the created address, its input is the init code, and its output is the deployed code. See MIP-16 eth_queryTraces Response.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x6a809a3",
+        "toBlock": "0x6a809a3",
+        "filter": {
+          "to": "0x0865337bd3f43b42e8e75e7835b52e9eb3c01624"
+        },
+        "fields": {
+          "traces": "all"
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "traces": [
+          {
+            "type": "CREATE",
+            "from": "0xa81fc03686883efa5b5ca4fac1437e6870216fd8",
+            "to": "0x0865337bd3f43b42e8e75e7835b52e9eb3c01624",
+            "value": "0x0",
+            "gas": "0x12ff12",
+            "gasUsed": "0x2342",
+            "input": "0x3d602d80600a3d3981f3363d3d373d3d3d363d7348d9392db46b00c291a2e29b1ac6c703b57024e25af43d82803e903d91602b57fd5bf3",
+            "output": "0x363d3d373d3d3d363d7348d9392db46b00c291a2e29b1ac6c703b57024e25af43d82803e903d91602b57fd5bf3",
+            "error": null,
+            "reverted": false,
+            "blockHash": "0x0acc46267ced22b11427f84f9bda0858073e6a0ba8cb6ea39053fa1645f820f4",
+            "blockNumber": "0x6a809a3",
+            "transactionHash": "0xfb9b4a17d7f2d5789b189cc35470d39f78ffac0b960b0e4b952b7278e8e61684",
+            "transactionIndex": "0xe",
+            "traceAddress": [
+              0
+            ]
+          },
+          {
+            "type": "CALL",
+            "from": "0xa81fc03686883efa5b5ca4fac1437e6870216fd8",
+            "to": "0x0865337bd3f43b42e8e75e7835b52e9eb3c01624",
+            "value": "0x0",
+            "gas": "0x12dab3",
+            "gasUsed": "0x365a5",
+            "input": "0x1794bb3c000000000000000000000000754704bc059f8c67012fed69bc8a327a5aafb6030000000000000000000000005fabe7eb6629058bcaa0d2041cacd32638a7480b0000000000000000000000000000000000000000000000000011c37937e08000",
+            "output": "0x",
+            "error": null,
+            "reverted": false,
+            "blockHash": "0x0acc46267ced22b11427f84f9bda0858073e6a0ba8cb6ea39053fa1645f820f4",
+            "blockNumber": "0x6a809a3",
+            "transactionHash": "0xfb9b4a17d7f2d5789b189cc35470d39f78ffac0b960b0e4b952b7278e8e61684",
+            "transactionIndex": "0xe",
+            "traceAddress": [
+              1
+            ]
+          },
+          {
+            "type": "CALL",
+            "from": "0xa81fc03686883efa5b5ca4fac1437e6870216fd8",
+            "to": "0x0865337bd3f43b42e8e75e7835b52e9eb3c01624",
+            "value": "0x0",
+            "gas": "0xf08cc",
+            "gasUsed": "0x5a87f",
+            "input": "0x6e553f650000000000000000000000000000000000000000000000000000000000000002000000000000000000000000a81fc03686883efa5b5ca4fac1437e6870216fd8",
+            "output": "0x00000000000000000000000000000000000000000000000000000000001e8480",
+            "error": null,
+            "reverted": false,
+            "blockHash": "0x0acc46267ced22b11427f84f9bda0858073e6a0ba8cb6ea39053fa1645f820f4",
+            "blockNumber": "0x6a809a3",
+            "transactionHash": "0xfb9b4a17d7f2d5789b189cc35470d39f78ffac0b960b0e4b952b7278e8e61684",
+            "transactionIndex": "0xe",
+            "traceAddress": [
+              3
+            ]
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x6a809a3",
+        "hash": "0x0acc46267ced22b11427f84f9bda0858073e6a0ba8cb6ea39053fa1645f820f4",
+        "parentHash": "0x1dfa3202b354c5d508c3c5cc2aaec6fcd5303f42025b3c69f77ee13794a166b0"
+      },
+      "toBlock": {
+        "number": "0x6a809a3",
+        "hash": "0x0acc46267ced22b11427f84f9bda0858073e6a0ba8cb6ea39053fa1645f820f4",
+        "parentHash": "0x1dfa3202b354c5d508c3c5cc2aaec6fcd5303f42025b3c69f77ee13794a166b0"
+      },
+      "cursorBlock": {
+        "number": "0x6a809a3",
+        "hash": "0x0acc46267ced22b11427f84f9bda0858073e6a0ba8cb6ea39053fa1645f820f4",
+        "parentHash": "0x1dfa3202b354c5d508c3c5cc2aaec6fcd5303f42025b3c69f77ee13794a166b0"
+      }
+    }
+  }
+}

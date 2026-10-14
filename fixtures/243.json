@@ -1,0 +1,63 @@
+{
+  "description": "Filter by from, set includeReverted to true, and select all transfer fields. The failed CREATE frame has a value, so it is a reverted transfer with to null. See MIP-16 eth_queryTransfers.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x61ac4a5",
+        "toBlock": "0x61ac4a5",
+        "filter": {
+          "from": "0xfbd7309ece62f9a5c5ec00efd178f6b01ecacd08",
+          "includeReverted": true
+        },
+        "fields": {
+          "transfers": "all"
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transfers": [
+          {
+            "type": "CREATE",
+            "from": "0xfbd7309ece62f9a5c5ec00efd178f6b01ecacd08",
+            "to": null,
+            "value": "0xb1a2bc2ec50000",
+            "gas": "0xea60",
+            "gasUsed": "0xea60",
+            "input": "0x7355903c8157b785a4490b2f7d6b44c60f4c4075e8ff",
+            "output": "0x",
+            "error": "out of gas",
+            "reverted": true,
+            "blockHash": "0x40a95acbd5a597fd70c8278d407ce63944f0d93d6acb10acab30cef4bb8f00dd",
+            "blockNumber": "0x61ac4a5",
+            "transactionHash": "0x751936b06f0983f39153b35ad36a46ccbb9993b462a1edff8b6f1f1f2a8cb922",
+            "transactionIndex": "0xa",
+            "traceAddress": []
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x61ac4a5",
+        "hash": "0x40a95acbd5a597fd70c8278d407ce63944f0d93d6acb10acab30cef4bb8f00dd",
+        "parentHash": "0x82835b656a54359105c2dc7aa45887e5ae14b136c1484a9df757eb304db199ac"
+      },
+      "toBlock": {
+        "number": "0x61ac4a5",
+        "hash": "0x40a95acbd5a597fd70c8278d407ce63944f0d93d6acb10acab30cef4bb8f00dd",
+        "parentHash": "0x82835b656a54359105c2dc7aa45887e5ae14b136c1484a9df757eb304db199ac"
+      },
+      "cursorBlock": {
+        "number": "0x61ac4a5",
+        "hash": "0x40a95acbd5a597fd70c8278d407ce63944f0d93d6acb10acab30cef4bb8f00dd",
+        "parentHash": "0x82835b656a54359105c2dc7aa45887e5ae14b136c1484a9df757eb304db199ac"
+      }
+    }
+  }
+}

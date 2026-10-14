@@ -1,0 +1,84 @@
+{
+  "description": "Filter by from and select all trace fields. A CREATE frame runs init code that self-destructs, so the CREATE output is 0x. The SELFDESTRUCT frame has the beneficiary as to, the full balance as value, gas 0x0, and input 0x. See MIP-16 eth_queryTraces Response.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x656fcfb",
+        "toBlock": "0x656fcfb",
+        "filter": {
+          "from": [
+            "0xbd9a5c067d52fa28c16b847cf3ddcc77880e7654",
+            "0x31207ddde457763dad214b88ba3b75d572ac30bd"
+          ]
+        },
+        "fields": {
+          "traces": "all"
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "traces": [
+          {
+            "type": "CREATE",
+            "from": "0xbd9a5c067d52fa28c16b847cf3ddcc77880e7654",
+            "to": "0x31207ddde457763dad214b88ba3b75d572ac30bd",
+            "value": "0x2a8426fc65c800",
+            "gas": "0x5138a",
+            "gasUsed": "0x5138a",
+            "input": "0x60806040526040516101bb3803806101bb83398181016040528101906100259190610110565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1603610094576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161008b9061019a565b60405180910390fd5b8073ffffffffffffffffffffffffffffffffffffffff16ff5b600080fd5b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006100dd826100b2565b9050919050565b6100ed816100d2565b81146100f857600080fd5b50565b60008151905061010a816100e4565b92915050565b600060208284031215610126576101256100ad565b5b6000610134848285016100fb565b91505092915050565b600082825260208201905092915050565b7f496e76616c696420726563697069656e74206164647265737300000000000000600082015250565b600061018460198361013d565b915061018f8261014e565b602082019050919050565b600060208201905081810360008301526101b381610177565b905091905056fe000000000000000000000000cad22f9e3615395b6998382375ff26878f0b2a09",
+            "output": "0x",
+            "error": null,
+            "reverted": false,
+            "blockHash": "0x0dd0d062c235547a66c3d9adcc53736338721149b76faed8fe53fac1e01f0b80",
+            "blockNumber": "0x656fcfb",
+            "transactionHash": "0xd3e0f158b317a18fdc4526ec1df127dad812f1be472b54ea83eb39105b90e06d",
+            "transactionIndex": "0xa",
+            "traceAddress": []
+          },
+          {
+            "type": "SELFDESTRUCT",
+            "from": "0x31207ddde457763dad214b88ba3b75d572ac30bd",
+            "to": "0xcad22f9e3615395b6998382375ff26878f0b2a09",
+            "value": "0x2a8426fc65c800",
+            "gas": "0x0",
+            "gasUsed": "0x0",
+            "input": "0x",
+            "output": "0x",
+            "error": null,
+            "reverted": false,
+            "blockHash": "0x0dd0d062c235547a66c3d9adcc53736338721149b76faed8fe53fac1e01f0b80",
+            "blockNumber": "0x656fcfb",
+            "transactionHash": "0xd3e0f158b317a18fdc4526ec1df127dad812f1be472b54ea83eb39105b90e06d",
+            "transactionIndex": "0xa",
+            "traceAddress": [
+              0
+            ]
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x656fcfb",
+        "hash": "0x0dd0d062c235547a66c3d9adcc53736338721149b76faed8fe53fac1e01f0b80",
+        "parentHash": "0x43114852bb77e8fa847b4356a9e06fa472f8e51863ecbc5b3630862858e71f6a"
+      },
+      "toBlock": {
+        "number": "0x656fcfb",
+        "hash": "0x0dd0d062c235547a66c3d9adcc53736338721149b76faed8fe53fac1e01f0b80",
+        "parentHash": "0x43114852bb77e8fa847b4356a9e06fa472f8e51863ecbc5b3630862858e71f6a"
+      },
+      "cursorBlock": {
+        "number": "0x656fcfb",
+        "hash": "0x0dd0d062c235547a66c3d9adcc53736338721149b76faed8fe53fac1e01f0b80",
+        "parentHash": "0x43114852bb77e8fa847b4356a9e06fa472f8e51863ecbc5b3630862858e71f6a"
+      }
+    }
+  }
+}

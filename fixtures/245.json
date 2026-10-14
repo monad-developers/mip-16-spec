@@ -1,0 +1,64 @@
+{
+  "description": "Filter by to with a SELFDESTRUCT beneficiary and select all transfer fields. The SELFDESTRUCT frame is a transfer. See MIP-16 eth_queryTransfers.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x656fcfb",
+        "toBlock": "0x656fcfb",
+        "filter": {
+          "to": "0xcad22f9e3615395b6998382375ff26878f0b2a09"
+        },
+        "fields": {
+          "transfers": "all"
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "transfers": [
+          {
+            "type": "SELFDESTRUCT",
+            "from": "0x31207ddde457763dad214b88ba3b75d572ac30bd",
+            "to": "0xcad22f9e3615395b6998382375ff26878f0b2a09",
+            "value": "0x2a8426fc65c800",
+            "gas": "0x0",
+            "gasUsed": "0x0",
+            "input": "0x",
+            "output": "0x",
+            "error": null,
+            "reverted": false,
+            "blockHash": "0x0dd0d062c235547a66c3d9adcc53736338721149b76faed8fe53fac1e01f0b80",
+            "blockNumber": "0x656fcfb",
+            "transactionHash": "0xd3e0f158b317a18fdc4526ec1df127dad812f1be472b54ea83eb39105b90e06d",
+            "transactionIndex": "0xa",
+            "traceAddress": [
+              0
+            ]
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x656fcfb",
+        "hash": "0x0dd0d062c235547a66c3d9adcc53736338721149b76faed8fe53fac1e01f0b80",
+        "parentHash": "0x43114852bb77e8fa847b4356a9e06fa472f8e51863ecbc5b3630862858e71f6a"
+      },
+      "toBlock": {
+        "number": "0x656fcfb",
+        "hash": "0x0dd0d062c235547a66c3d9adcc53736338721149b76faed8fe53fac1e01f0b80",
+        "parentHash": "0x43114852bb77e8fa847b4356a9e06fa472f8e51863ecbc5b3630862858e71f6a"
+      },
+      "cursorBlock": {
+        "number": "0x656fcfb",
+        "hash": "0x0dd0d062c235547a66c3d9adcc53736338721149b76faed8fe53fac1e01f0b80",
+        "parentHash": "0x43114852bb77e8fa847b4356a9e06fa472f8e51863ecbc5b3630862858e71f6a"
+      }
+    }
+  }
+}
