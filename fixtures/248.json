@@ -1,0 +1,33 @@
+{
+  "description": "Filter logs by an address array that contains null. A filter array must not contain null, so the request fails with -32602. See MIP-16 Filters.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf091",
+        "toBlock": "0x2faf091",
+        "fields": {
+          "logs": [
+            "logIndex"
+          ]
+        },
+        "filter": {
+          "address": [
+            "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+            null
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+      "code": -32602,
+      "message": "Invalid params"
+    }
+  }
+}
