@@ -1,0 +1,56 @@
+{
+  "description": "Filter logs by topics [null, null, null, null]. A topics array can have four positions, so the request is valid. No log in the block has four topics, so the result is empty. See MIP-16 eth_queryLogs Filter.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf08b",
+        "toBlock": "0x2faf08b",
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "transactionIndex",
+            "address",
+            "topics",
+            "data"
+          ]
+        },
+        "filter": {
+          "topics": [
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "logs": []
+      },
+      "fromBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "toBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "cursorBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "description": "Filter logs by topics [topic0, []]. A topic array at a position must not be empty, also after the first position, so the request fails with -32602. See MIP-16 eth_queryLogs Filter.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf08b",
+        "toBlock": "0x2faf08b",
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "transactionIndex",
+            "address",
+            "topics",
+            "data"
+          ]
+        },
+        "filter": {
+          "topics": [
+            "0xf36866d965ee70c8632ff558f5cf8d41ee9ca1d0d0bc7700786e57be60747390",
+            []
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "error": {
+      "code": -32602,
+      "message": "Invalid params"
+    }
+  }
+}

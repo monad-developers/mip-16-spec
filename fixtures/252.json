@@ -1,0 +1,54 @@
+{
+  "description": "Filter logs by topics [topic0, null]. A trailing null is a condition: a log matches only if it has at least two topics. The four logs with this topic0 have one topic, so the result is empty, but topics [[topic0]] in 251.json has four logs. See MIP-16 eth_queryLogs Filter.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf08b",
+        "toBlock": "0x2faf08b",
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "transactionIndex",
+            "address",
+            "topics",
+            "data"
+          ]
+        },
+        "filter": {
+          "topics": [
+            "0xf36866d965ee70c8632ff558f5cf8d41ee9ca1d0d0bc7700786e57be60747390",
+            null
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "logs": []
+      },
+      "fromBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "toBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "cursorBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      }
+    }
+  }
+}
