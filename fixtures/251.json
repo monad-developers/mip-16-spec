@@ -1,0 +1,96 @@
+{
+  "description": "Filter logs by topics [[topic0]]. A topic array with one element at a position is the same as the topic itself, so the result has the four logs with this topic0. See MIP-16 eth_queryLogs Filter.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf08b",
+        "toBlock": "0x2faf08b",
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "transactionIndex",
+            "address",
+            "topics",
+            "data"
+          ]
+        },
+        "filter": {
+          "topics": [
+            [
+              "0xf36866d965ee70c8632ff558f5cf8d41ee9ca1d0d0bc7700786e57be60747390"
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "data": {
+        "logs": [
+          {
+            "blockNumber": "0x2faf08b",
+            "logIndex": "0x4",
+            "transactionIndex": "0x2",
+            "address": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "topics": [
+              "0xf36866d965ee70c8632ff558f5cf8d41ee9ca1d0d0bc7700786e57be60747390"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000045aac0b9e0455448000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000696fcfdd"
+          },
+          {
+            "blockNumber": "0x2faf08b",
+            "logIndex": "0x5",
+            "transactionIndex": "0x2",
+            "address": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "topics": [
+              "0xf36866d965ee70c8632ff558f5cf8d41ee9ca1d0d0bc7700786e57be60747390"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000000001bc91e4d4f4e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000696fcfdd"
+          },
+          {
+            "blockNumber": "0x2faf08b",
+            "logIndex": "0x6",
+            "transactionIndex": "0x2",
+            "address": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "topics": [
+              "0xf36866d965ee70c8632ff558f5cf8d41ee9ca1d0d0bc7700786e57be60747390"
+            ],
+            "data": "0x000000000000000000000000000000000000000000000000000008227694a480425443000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000696fcfdd"
+          },
+          {
+            "blockNumber": "0x2faf08b",
+            "logIndex": "0x7",
+            "transactionIndex": "0x2",
+            "address": "0x368ee51e47a594fe1e9908b48228748a30bc7ca4",
+            "topics": [
+              "0xf36866d965ee70c8632ff558f5cf8d41ee9ca1d0d0bc7700786e57be60747390"
+            ],
+            "data": "0x00000000000000000000000000000000000000000000000000000002f5526a00534f4c000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000696fcfdd"
+          }
+        ]
+      },
+      "fromBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "toBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      },
+      "cursorBlock": {
+        "number": "0x2faf08b",
+        "hash": "0x76784dcd9ed0f2de6dd2c940f513f2d4ce77fe5c1ff6494962f57774c0834968",
+        "parentHash": "0xd4232e280310dc032759982db1c1680e15cd4a1fbe3043acdeb5629fba5d0973"
+      }
+    }
+  }
+}
