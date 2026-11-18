@@ -1,0 +1,29 @@
+{
+  "description": "Filter by sender and recipient (staking precompile) over 10,000,000 blocks, newest first.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x39386ff",
+        "toBlock": "0x2faf080",
+        "order": "desc",
+        "target": "0x64",
+        "filter": {
+          "from": "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+          "to": "0x0000000000000000000000000000000000001000"
+        },
+        "fields": {
+          "traces": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress",
+            "from",
+            "to"
+          ]
+        }
+      }
+    ]
+  }
+}

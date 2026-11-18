@@ -1,0 +1,29 @@
+{
+  "description": "Filter by the Transfer topic and two wildcards, so logs need at least three topics, over 10,000 dense blocks.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x23f8bd8",
+        "toBlock": "0x23fb2e7",
+        "target": "0x64",
+        "filter": {
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            null,
+            null
+          ]
+        },
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "topics"
+          ]
+        }
+      }
+    ]
+  }
+}

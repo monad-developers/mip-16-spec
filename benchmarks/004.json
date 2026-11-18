@@ -1,0 +1,29 @@
+{
+  "description": "Filter by two miners over 10,000,000 blocks, newest first.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryBlocks",
+    "params": [
+      {
+        "fromBlock": "0x39386ff",
+        "toBlock": "0x2faf080",
+        "order": "desc",
+        "target": "0x64",
+        "filter": {
+          "miner": [
+            "0x45e79d7a85afeeda4d49997d835e9f7451f193bc",
+            "0x36b173c207ebd8ea4b193d0fe3a88b22e69eaa9e"
+          ]
+        },
+        "fields": {
+          "blocks": [
+            "number",
+            "hash",
+            "miner"
+          ]
+        }
+      }
+    ]
+  }
+}

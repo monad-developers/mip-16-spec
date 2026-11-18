@@ -1,0 +1,28 @@
+{
+  "description": "Filter by recipient (USDC) and selector over 1,000,000 blocks.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x2faf080",
+        "toBlock": "0x30a32bf",
+        "target": "0x64",
+        "filter": {
+          "to": "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+          "selector": "0xa9059cbb"
+        },
+        "fields": {
+          "transactions": [
+            "blockNumber",
+            "transactionIndex",
+            "from",
+            "to",
+            "input"
+          ]
+        }
+      }
+    ]
+  }
+}

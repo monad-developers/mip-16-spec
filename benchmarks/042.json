@@ -1,0 +1,32 @@
+{
+  "description": "Filter by a recipient with few frames and include reverted frames over the full history, newest first.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x68e7780",
+        "toBlock": "0x0",
+        "order": "desc",
+        "target": "0x64",
+        "filter": {
+          "to": "0xf12cea359512b8ccd5e7b33b3d308a174837250c",
+          "includeReverted": true
+        },
+        "fields": {
+          "traces": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress",
+            "from",
+            "to",
+            "value",
+            "error",
+            "reverted"
+          ]
+        }
+      }
+    ]
+  }
+}

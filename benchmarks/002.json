@@ -1,0 +1,23 @@
+{
+  "description": "The latest 100 blocks, newest first, with selected fields.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryBlocks",
+    "params": [
+      {
+        "fromBlock": "latest",
+        "order": "desc",
+        "target": "0x64",
+        "fields": {
+          "blocks": [
+            "number",
+            "hash",
+            "timestamp",
+            "gasUsed"
+          ]
+        }
+      }
+    ]
+  }
+}

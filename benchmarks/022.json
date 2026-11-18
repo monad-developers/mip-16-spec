@@ -1,0 +1,37 @@
+{
+  "description": "The latest 100 WMON Transfer logs, newest first, and join transactions and blocks.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "latest",
+        "order": "desc",
+        "target": "0x64",
+        "filter": {
+          "address": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+          ]
+        },
+        "fields": {
+          "logs": [
+            "address",
+            "topics",
+            "data",
+            "blockNumber"
+          ],
+          "transactions": [
+            "hash",
+            "input"
+          ],
+          "blocks": [
+            "number",
+            "timestamp"
+          ]
+        }
+      }
+    ]
+  }
+}

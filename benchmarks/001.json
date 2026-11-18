@@ -1,0 +1,22 @@
+{
+  "description": "Three block fields over 1,000,000 blocks, with target 0x3e8.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryBlocks",
+    "params": [
+      {
+        "fromBlock": "0x2faf080",
+        "toBlock": "0x30a32bf",
+        "target": "0x3e8",
+        "fields": {
+          "blocks": [
+            "number",
+            "timestamp",
+            "gasUsed"
+          ]
+        }
+      }
+    ]
+  }
+}

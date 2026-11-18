@@ -1,0 +1,36 @@
+{
+  "description": "Filter by two addresses and two topics over 100,000 blocks, newest first.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2fc771f",
+        "toBlock": "0x2faf080",
+        "order": "desc",
+        "target": "0x1f4",
+        "filter": {
+          "address": [
+            "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+            "0x3bd359c1119da7da1d913d1c4d2b7c461115433a"
+          ],
+          "topics": [
+            [
+              "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+              "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
+            ]
+          ]
+        },
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "address",
+            "topics"
+          ]
+        }
+      }
+    ]
+  }
+}

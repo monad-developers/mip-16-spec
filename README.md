@@ -103,6 +103,26 @@ The runner does these checks in order, and stops at the first stage that fails. 
 
 Some page checks need specific fields, such as the fields of the ordering key. If a fixture does not select them, only the comparison finds the problem.
 
+## Benchmarks
+
+The benchmarks in `benchmarks/` measure the performance of a server. They do not check the responses. Each file contains a `description` and a JSON-RPC `request` over a wide block range, with a different filter, field selection, relation, order, or `target`.
+
+```sh
+RPC_URL=http://127.0.0.1:8080 bun run bench
+```
+
+The runner sends each request, and then requests the next pages, up to 3 pages. It prints the duration of each page and the sum:
+
+```
+012.json eth_queryTransactions: Filter by the transfer(address,uint256) selector over 100,000 blocks.
+  page 1: 319 ms
+  page 2: 380 ms
+  page 3: 146 ms
+  total: 844 ms
+```
+
+The benchmarks need the whole chain, from block `0x0` to the latest block, for all five methods. Some benchmarks query the full history, and some start at `latest`. A node that does not serve the whole chain fails some benchmarks with `-32001`.
+
 ## Pages and Budget
 
 Each fixture contains the result of the complete range. The runner requests pages until `cursorBlock` is `toBlock`, changes only `fromBlock` for each next page, and compares the merged result.

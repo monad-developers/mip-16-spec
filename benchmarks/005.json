@@ -1,0 +1,20 @@
+{
+  "description": "One block field over the full history from block 0x0, with target 0x1.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryBlocks",
+    "params": [
+      {
+        "fromBlock": "0x0",
+        "toBlock": "0x68e7780",
+        "target": "0x1",
+        "fields": {
+          "blocks": [
+            "number"
+          ]
+        }
+      }
+    ]
+  }
+}

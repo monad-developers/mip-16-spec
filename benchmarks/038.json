@@ -1,0 +1,28 @@
+{
+  "description": "Filter by the transfer(address,uint256) selector over 100,000 blocks.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x2faf080",
+        "toBlock": "0x2fc771f",
+        "target": "0x64",
+        "filter": {
+          "selector": "0xa9059cbb"
+        },
+        "fields": {
+          "traces": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress",
+            "to",
+            "input",
+            "reverted"
+          ]
+        }
+      }
+    ]
+  }
+}

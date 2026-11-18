@@ -1,0 +1,31 @@
+{
+  "description": "Selected trace fields over 1,000 dense blocks, and join transactions and blocks.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x23f8bd8",
+        "toBlock": "0x23f8fbf",
+        "target": "0x64",
+        "fields": {
+          "traces": [
+            "from",
+            "to",
+            "value",
+            "reverted",
+            "traceAddress",
+            "input"
+          ],
+          "transactions": [
+            "hash"
+          ],
+          "blocks": [
+            "number"
+          ]
+        }
+      }
+    ]
+  }
+}
