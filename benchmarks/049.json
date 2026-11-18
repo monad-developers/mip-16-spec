@@ -1,0 +1,36 @@
+{
+  "description": "Filter by sender and recipient over 10,000,000 blocks, and join transactions.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x2faf080",
+        "toBlock": "0x39386ff",
+        "target": "0x64",
+        "filter": {
+          "from": [
+            "0x6f49a8f621353f12378d0046e7d7e4b9b249dc9e",
+            "0x5c4ec8d4fc6e74f8a7a6df6d36017eeffff9301f"
+          ],
+          "to": "0x0000000000000000000000000000000000001000"
+        },
+        "fields": {
+          "transfers": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress",
+            "from",
+            "to",
+            "value"
+          ],
+          "transactions": [
+            "hash",
+            "from"
+          ]
+        }
+      }
+    ]
+  }
+}

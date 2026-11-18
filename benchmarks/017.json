@@ -1,0 +1,27 @@
+{
+  "description": "The latest 100 transactions, newest first, with selected fields, and join blocks.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "latest",
+        "order": "desc",
+        "target": "0x64",
+        "fields": {
+          "transactions": [
+            "hash",
+            "from",
+            "to",
+            "value"
+          ],
+          "blocks": [
+            "number",
+            "timestamp"
+          ]
+        }
+      }
+    ]
+  }
+}

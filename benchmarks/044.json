@@ -1,0 +1,15 @@
+{
+  "description": "All transfer fields over 1,000 dense blocks, with target 0x64.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "0x23f8bd8",
+        "toBlock": "0x23f8fbf",
+        "target": "0x64"
+      }
+    ]
+  }
+}

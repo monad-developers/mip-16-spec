@@ -1,0 +1,23 @@
+{
+  "description": "The latest 100 transfers, newest first, with selected fields.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "latest",
+        "order": "desc",
+        "target": "0x64",
+        "fields": {
+          "transfers": [
+            "blockNumber",
+            "from",
+            "to",
+            "value"
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "description": "Filter by topics[2] only, after two wildcards, over 1,000,000 blocks.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf080",
+        "toBlock": "0x30a32bf",
+        "target": "0x64",
+        "filter": {
+          "topics": [
+            null,
+            null,
+            "0x0000000000000000000000006f49a8f621353f12378d0046e7d7e4b9b249dc9e"
+          ]
+        },
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "topics"
+          ]
+        }
+      }
+    ]
+  }
+}

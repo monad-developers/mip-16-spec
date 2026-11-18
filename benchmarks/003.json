@@ -1,0 +1,24 @@
+{
+  "description": "Filter by one miner over 1,000,000 blocks.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryBlocks",
+    "params": [
+      {
+        "fromBlock": "0x2faf080",
+        "toBlock": "0x30a32bf",
+        "target": "0x64",
+        "filter": {
+          "miner": "0x45e79d7a85afeeda4d49997d835e9f7451f193bc"
+        },
+        "fields": {
+          "blocks": [
+            "number",
+            "miner"
+          ]
+        }
+      }
+    ]
+  }
+}

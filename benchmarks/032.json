@@ -1,0 +1,23 @@
+{
+  "description": "Only the data field, without the ordering key, over 1,000 dense blocks, and join transactions.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x23f8bd8",
+        "toBlock": "0x23f8fbf",
+        "target": "0x64",
+        "fields": {
+          "logs": [
+            "data"
+          ],
+          "transactions": [
+            "from"
+          ]
+        }
+      }
+    ]
+  }
+}

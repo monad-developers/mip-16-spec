@@ -1,0 +1,29 @@
+{
+  "description": "Filter by two selectors over 1,000,000 blocks, newest first.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x30a32bf",
+        "toBlock": "0x2faf080",
+        "order": "desc",
+        "target": "0x64",
+        "filter": {
+          "selector": [
+            "0xa9059cbb",
+            "0x095ea7b3"
+          ]
+        },
+        "fields": {
+          "transactions": [
+            "blockNumber",
+            "transactionIndex",
+            "input"
+          ]
+        }
+      }
+    ]
+  }
+}

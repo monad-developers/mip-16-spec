@@ -1,0 +1,28 @@
+{
+  "description": "Filter by the Transfer topic over 10,000,000 blocks, newest first.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x39386ff",
+        "toBlock": "0x2faf080",
+        "order": "desc",
+        "target": "0x64",
+        "filter": {
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+          ]
+        },
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "topics"
+          ]
+        }
+      }
+    ]
+  }
+}

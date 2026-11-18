@@ -1,0 +1,29 @@
+{
+  "description": "Filter by a recipient contract (WMON) over 100,000 blocks, newest first.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x2fc771f",
+        "toBlock": "0x2faf080",
+        "order": "desc",
+        "target": "0x64",
+        "filter": {
+          "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a"
+        },
+        "fields": {
+          "traces": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress",
+            "type",
+            "to",
+            "input"
+          ]
+        }
+      }
+    ]
+  }
+}

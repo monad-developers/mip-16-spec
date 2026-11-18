@@ -1,0 +1,29 @@
+{
+  "description": "Filter by a sender with few frames over the full history.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "0x0",
+        "toBlock": "0x68e7780",
+        "target": "0x64",
+        "filter": {
+          "from": "0xf12cea359512b8ccd5e7b33b3d308a174837250c"
+        },
+        "fields": {
+          "traces": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress",
+            "type",
+            "from",
+            "to",
+            "value"
+          ]
+        }
+      }
+    ]
+  }
+}

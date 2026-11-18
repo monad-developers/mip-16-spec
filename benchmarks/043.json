@@ -1,0 +1,18 @@
+{
+  "description": "The latest 100 calls to WMON, newest first.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTraces",
+    "params": [
+      {
+        "fromBlock": "latest",
+        "order": "desc",
+        "target": "0x64",
+        "filter": {
+          "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "description": "Filter by address (WMON) over 10,000,000 blocks.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf080",
+        "toBlock": "0x39386ff",
+        "target": "0x64",
+        "filter": {
+          "address": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a"
+        },
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "address"
+          ]
+        }
+      }
+    ]
+  }
+}

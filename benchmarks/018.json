@@ -1,0 +1,25 @@
+{
+  "description": "Only receipt fields, without the ordering key, over 10,000 dense blocks.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x23f8bd8",
+        "toBlock": "0x23fb2e7",
+        "target": "0x1f4",
+        "fields": {
+          "transactions": [
+            "status",
+            "gasUsed",
+            "cumulativeGasUsed",
+            "effectiveGasPrice",
+            "contractAddress",
+            "logsBloom"
+          ]
+        }
+      }
+    ]
+  }
+}

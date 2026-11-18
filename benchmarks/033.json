@@ -1,0 +1,21 @@
+{
+  "description": "The latest 100 USDC Approval logs, newest first.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "latest",
+        "order": "desc",
+        "target": "0x64",
+        "filter": {
+          "address": "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+          "topics": [
+            "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
+          ]
+        }
+      }
+    ]
+  }
+}

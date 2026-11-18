@@ -1,0 +1,31 @@
+{
+  "description": "Filter by the Transfer topic and three wildcards, so only logs with four topics match, over 1,000,000 blocks.",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "0x2faf080",
+        "toBlock": "0x30a32bf",
+        "target": "0x64",
+        "filter": {
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            null,
+            null,
+            null
+          ]
+        },
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "address",
+            "topics"
+          ]
+        }
+      }
+    ]
+  }
+}
