@@ -1,0 +1,26 @@
+{
+  "description": "Set fromBlock to 0x0 and omit toBlock, with target 0x1. toBlock defaults to latest. The range has too many pages to request, so the runner checks only the first page. A server that cannot scan the whole range must end the page early, not fail because of the range size. See MIP-16 Block range.",
+  "firstPageOnly": true,
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransactions",
+    "params": [
+      {
+        "fromBlock": "0x0",
+        "target": "0x1",
+        "fields": {
+          "transactions": [
+            "blockNumber",
+            "transactionIndex",
+            "hash"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1
+  }
+}

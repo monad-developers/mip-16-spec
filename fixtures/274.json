@@ -1,0 +1,29 @@
+{
+  "description": "Filter by an address that emits no logs, from earliest to latest, without target. No block matches, so the server must end the page at its budget and return no logs, not fail because of the range size. The runner checks only the first page. See MIP-16 Block-aligned pagination.",
+  "firstPageOnly": true,
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryLogs",
+    "params": [
+      {
+        "fromBlock": "earliest",
+        "toBlock": "latest",
+        "filter": {
+          "address": "0x000000000000000000000000000000000000dead"
+        },
+        "fields": {
+          "logs": [
+            "blockNumber",
+            "logIndex",
+            "address"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1
+  }
+}

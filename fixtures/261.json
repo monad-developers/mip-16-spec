@@ -1,0 +1,27 @@
+{
+  "description": "Set fromBlock to earliest and toBlock to latest, with target 0x1. The range is the whole chain. The range has too many pages to request, so the runner checks only the first page. A server that cannot scan the whole range must end the page early, not fail because of the range size. See MIP-16 Block range and Block-aligned pagination.",
+  "firstPageOnly": true,
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "eth_queryTransfers",
+    "params": [
+      {
+        "fromBlock": "earliest",
+        "toBlock": "latest",
+        "target": "0x1",
+        "fields": {
+          "transfers": [
+            "blockNumber",
+            "transactionIndex",
+            "traceAddress"
+          ]
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1
+  }
+}

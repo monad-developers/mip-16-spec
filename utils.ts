@@ -23,7 +23,8 @@ export type RpcResponse = {
   result?: QueryResult;
   error?: { code: number; message?: string; data?: unknown };
 };
-export type Fixture = { description: string; request: RpcRequest; response: RpcResponse };
+/** With `firstPageOnly`, the runner checks only the first page. It does not request more pages or compare a result. */
+export type Fixture = { description: string; request: RpcRequest; response: RpcResponse; firstPageOnly?: boolean };
 
 // Value types. See MIP-16 Value types.
 
@@ -857,6 +858,10 @@ async function runChecked(url: string, fixture: Fixture, report: OnRequest, onNo
   const checkTargetPage = (page: QueryResult) => (expected.result ? checkTargetCursor(method, params, expected.result, page, onNote) : []);
   const problems = [...checkPage(method, params, first), ...checkResolvedRange(params, first), ...checkTargetPage(first)];
   if (problems.length) return { status: "failed", problems };
+
+  // A range such as the whole chain has too many pages to request. The fixture tests only that the server returns a
+  // valid first page. See README Pages and Budget.
+  if (fixture.firstPageOnly) return { status: "passed", problems: [], pages: 1 };
 
   const paged = await collectPages(url, method, params, first, report, checkTargetPage);
   if (paged.problems.length) return { status: "failed", problems: paged.problems, pages: paged.pages };
