@@ -56,6 +56,7 @@ For each fetch request, the runner prints the duration, the `fromBlock` and `toB
 | `description` | `string` | What the fixture tests. Refer to the MIP-16 section. |
 | `request` | `object` | The full JSON-RPC request. The runner sends it without change. |
 | `response` | `object` | The expected JSON-RPC response. It contains `result` or `error`. If it contains neither, the request must succeed, but the runner does not compare the result. |
+| `firstPageOnly` | `boolean` | Optional. If `true`, the runner checks only the first page, and does not request more pages. See [Pages and Budget](#pages-and-budget). |
 
 Example:
 
@@ -131,6 +132,8 @@ A page can end early because of `target` or because of the server budget. The ru
 
 Fixtures `020`–`029` and `035`–`039` paginate because of `target`. Any fixture can paginate because of the budget. A server that ends the page early gets a note, not a failure, because the runner cannot tell this defect from the budget.
 
+Fixtures `257`–`274` query the whole chain, from `earliest` to `latest`, with explicit tags or with the defaults of omitted `fromBlock` and `toBlock`. They have `firstPageOnly`, because the range has too many pages to request. MIP-16 does not let a server reject a request because of the range size. A server that cannot scan the whole range must end the page at its budget, and fail with `-32005` only if it cannot complete `fromBlock`. Thus these fixtures fail on a server that rejects a wide range, for example with `-32602`.
+
 ## Response Schemas
 
 The runner uses the object types in [Appendix: Monad Response Schemas](https://github.com/monad-crypto/MIPs/pull/89). A fixture that selects `"all"`, or that omits `fields`, expects all the fields that the appendix defines for that object. A fixture that selects a field that the appendix does not define expects `-32602`.
@@ -153,3 +156,5 @@ This range does not contain some cases, so some fixtures use other blocks. The n
 | 111,677,385 (`0x6a80fc9`) | `eth_queryTraces` | `240` | A `CREATE2` frame |
 
 Block `0x11516c5` is old, and many nodes do not keep traces for old blocks. Thus no fixture queries traces or transfers in this block.
+
+Fixtures `257`–`274` query the whole chain, from block `0x0` to the latest block. To pass them, the node must serve the whole chain for all five methods. A node with a shorter availability window fails them with `-32001`.
